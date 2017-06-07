@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Blog 
 
 ```html
@@ -8,6 +9,14 @@
 
 
 
+||||||| merged common ancestors
+# Blog <img style="float: right;" src="images/image.png"> <img style="float: right;" src="images/image1.png">
+
+=======
+# Blog 
+![](images/image.png)
+![](images/image1.png)
+>>>>>>> origin/master
 ###### NOSQL Databases (0432 L 777)
 ###### SoSe 17
 
