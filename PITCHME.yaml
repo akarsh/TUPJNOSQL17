@@ -1,3 +1,4 @@
 theme : white
-slide-number: true
+slide-number : true
 logo : images/Untitled.png
+theme-override : PITCHME.css
