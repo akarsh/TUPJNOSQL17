@@ -19,7 +19,7 @@ This code is part of,
 - [Tutorials](#tutorials)
 
 ### Presentation
-Our presentation is made using markdown. We use the ![Gitpitch](https://gitpitch.com) to present our markdown presentation.
+Our presentation is made using markdown. We use the [Gitpitch](https://gitpitch.com) to present our markdown presentation.
 
 Here is our presentation public url https://gitpitch.com/akarsh/TUPJNOSQL17 
 
@@ -29,7 +29,7 @@ Here is our presentation public url https://gitpitch.com/akarsh/TUPJNOSQL17
     - [PITCHME.css](PITCHME.css) is the theme setting file.
 
 ### Markdown
-![(GitHub-Flavored) Markdown Editor](https://jbt.github.io/markdown-editor/) will be used. As, ![Gitpitch](https://gitpitch.com) does not support markdown provided by Github service.
+[(GitHub-Flavored) Markdown Editor](https://jbt.github.io/markdown-editor/) will be used. As, [Gitpitch](https://gitpitch.com) does not support markdown provided by Github service.
 
 ### Tutorials
 - Mark down
