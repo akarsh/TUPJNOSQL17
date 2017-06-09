@@ -13,13 +13,18 @@ This code is part of,
     Workload: 2 SWS
     ECTS: 3 LP
 
-## Presentation
-Markdown is used for presentation. 
+## Table of Contents
+    - [Presentation](#presentation)
+    - [Tutorials](#tutorials)
 
-## Tutorials
+### Presentation
+Our presentation is made using markdown. We use the ![Gitpitch](https://gitpitch.com/).
+Here is our presentation public url https://gitpitch.com/akarsh/TUPJNOSQL17 
+
+### Tutorials
    - [Markdown](#mark-down)
 
-### Mark down
+#### Mark down
 
 For tutorial on how to use markdown
 ![Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
