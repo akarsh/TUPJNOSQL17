@@ -37,7 +37,7 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
   - Python or Node.js
   - HTML 5, CSS 3
   - Documentation
-    - Markdown (Github)
+    - Markdown ((GitHub-Flavored) Markdown Editor, Atom)
     - Dropbox paper 
     - Wiki (if time permits)
 
@@ -47,10 +47,10 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 Task | week number
 ------------ | ------------- 
 Kick-off meeting | week 1
-Literature research | week 1,2
+Literature research | week 1, 2
 Tasks discussed | week 2
 Pitch presentation | week 2
-Implementation | week 3,4,5
+Implementation | week 3, 4, 5
 Final presentation | week 6
 
 ---
