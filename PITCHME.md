@@ -14,6 +14,7 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 - Problem statement
 - Goal
 - Approach
+- Technology stack
 - Plan
 
 ---
