@@ -50,8 +50,8 @@ Final presentation | week 6
 ---
 
 # Milestones
-- Project pitches
-- Projects presentations
+- [x] Project pitches
+- [ ] Projects presentations
 
 ---
 
