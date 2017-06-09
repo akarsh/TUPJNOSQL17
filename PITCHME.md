@@ -47,10 +47,11 @@ Pitch presentation | week 2
 Implementation | week 3,4,5
 Final presentation | week 6
 
-Milestones
+---
+
+# Milestones
 - Project pitches
 - Projects presentations
-
 
 ---
 
