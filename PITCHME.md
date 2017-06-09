@@ -33,13 +33,16 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 - Identify the NOSQL databases that fit to our problem statement.
 - Perform literature research to find any existing solutions that addresses the problem statement.
 - Design database architecture
-- Decsion on technology stack
-  - Python or Node.js
-  - HTML 5, CSS 3
-  - Documentation
-    - Markdown ((GitHub-Flavored) Markdown Editor, Atom)
-    - Dropbox paper 
-    - Wiki (if time permits)
+
+---
+
+# Decsion on technology stack
+- Python or Node.js
+- HTML 5, CSS 3
+- Documentation
+  - Markdown ((GitHub-Flavored) Markdown Editor, Atom)
+  - Dropbox paper 
+  - Wiki (if time permits)
 
 ---
 
