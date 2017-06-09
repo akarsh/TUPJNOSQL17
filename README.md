@@ -14,8 +14,8 @@ This code is part of,
     ECTS: 3 LP
 
 ## Table of Contents
-    - [Presentation](#presentation)
-    - [Tutorials](#tutorials)
+- [Presentation](#presentation)
+- [Tutorials](#tutorials)
 
 ### Presentation
 Our presentation is made using markdown. We use the ![Gitpitch](https://gitpitch.com/).
