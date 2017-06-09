@@ -26,7 +26,7 @@ Here is our presentation public url https://gitpitch.com/akarsh/TUPJNOSQL17
 - Presentation files
     - [PITCHME.md](PITCHME.md) is the presentation file.
     - [PITCHME.yaml](PITCHME.yaml) is the configuration file.
-    - [PITCHME.css)(PITCHME.css) is the theme setting file.
+    - [PITCHME.css](PITCHME.css) is the theme setting file.
 
 ### Markdown
 ![(GitHub-Flavored) Markdown Editor](https://jbt.github.io/markdown-editor/) will be used. As, ![Gitpitch](https://gitpitch.com) does not support markdown provided by Github service.
