@@ -11,10 +11,10 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 ---
 
 # Agenda
-### Problem statement
-### Goal
-### Approach
-### Plan
+- Problem statement
+- Goal
+- Approach
+- Plan
 
 ---
 
