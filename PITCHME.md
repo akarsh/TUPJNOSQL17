@@ -35,8 +35,7 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 - Design database architecture
 
 ---
-
-# Decsion on technology stack
+# Technology stack
 - Python or Node.js
 - HTML 5, CSS 3
 - Documentation
@@ -64,4 +63,4 @@ Final presentation | week 6
 
 ---
 
-# Questions ?
+# Thank you & Questions ?
