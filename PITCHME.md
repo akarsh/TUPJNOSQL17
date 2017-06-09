@@ -58,9 +58,8 @@ Final presentation | week 6
 ---
 
 # Milestones
-
-Project pitches - 12.06.2017 - done
-Projects presentations - 10.07.2017
+- Project pitches - 12.06.2017 - done
+- Projects presentations - 10.07.2017
 
 ---
 
