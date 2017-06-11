@@ -44,7 +44,7 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
   - Neo4j for Author-Blog post relation
   - Author session is stored in Riak (back up for Neo4j)
  
- ---
+---
  
 # NOSQl Databases Functions
 - MongoDB - Storing Author's Data 
