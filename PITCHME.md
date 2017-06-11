@@ -26,7 +26,7 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 - Features: 
   - Create a Blog post   
   - Modify contents of Blog post
-  - User accounts i.e. Author
+  - User accounts i.e. author, admin
 
 ---
 
