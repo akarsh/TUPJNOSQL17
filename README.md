@@ -18,6 +18,7 @@ This code is part of,
 - [Project](#project)
 - [Markdown](#markdown)
 - [Tutorials](#tutorials)
+- [Credits](#credits)
 
 ### Presentation
 Our presentation is made using markdown. We use the [Gitpitch](https://gitpitch.com) to present our markdown presentation.
@@ -41,3 +42,6 @@ This folder containts our project files. More information on how-to for the proj
     - [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
     - [Codecademy course on Markdown](https://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&ved=0ahUKEwj0xeHIq7DUAhVBuBoKHS69AggQFgg0MAI&url=https%3A%2F%2Fwww.codecademy.com%2Fcourses%2Fweb-intermediate-en-Bw3bg%2F0%2F1&usg=AFQjCNHm8_PJ4xOtbmdNlsGD3E1IZBp4pA&sig2=pKnUgTZSpMCEb8Feh4M1uA&cad=rja)
     - [A mini videos series of mastering markdown](https://masteringmarkdown.com/)
+    
+### Credits
+The project folder contains fork of original repo https://github.com/braitsch/node-login by [Stephen Braitsch](https://github.com/braitsch)
