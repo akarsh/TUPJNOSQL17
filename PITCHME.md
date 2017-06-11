@@ -27,7 +27,7 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 ---
 
 # Goal
-####To use 3 NOSQL databases in a Blog Application.
+#### To use 3 NOSQL databases in a Blog Application.
 We wish to implement a Blog Application that is connected to 3 NOSQL databases (MongoDB,Redis,Neo4j) performing 
 storage for various parts of the application.</br>
 Here Author can:
@@ -45,19 +45,19 @@ The Blog website is created using Node.js and we use HTML and CSS 3 for its form
 ---
 
 # Why are we using these Databases?
-###MongoDB:
+### MongoDB:
 - We have a dynamic schema
 - We can easily add/delete the new fields to our Author's data
 - Whole structure of our Author's data stored can be easily modified
 - Data will be highly available and scalable
 
-##Redis
+## Redis
 - Redis is very fast 
 - Making updates in key-value stored blog data is easier 
 - Supports variety of programming languages and data types
 - Atomic execution of commands
 
-##Neo4j
+## Neo4j
 - Easy to store relationships without using concepts like Foreign Keys 
 - It has more expressive and simpler data model 
 - Other NOSQL databases stores sets of disconnected aggregates hence its difficult to store connected data in them
