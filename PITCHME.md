@@ -6,7 +6,9 @@
 
 by
 
-Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
+Akarsh Seggemu <br />
+Budankailu Sameer Kumar Subudhi <br />
+Sonali Bhatnagar
 
 ---
 
@@ -24,9 +26,9 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 # Blog application
 - It is created using Node.js, HTML5 and CSS 3.
 - Features: 
-  - Create a Blog post   
-  - Modify contents of Blog post
-  - User accounts i.e. author, admin
+  - Create a Blog post.   
+  - Modify contents of Blog post.
+  - User accounts i.e. author, admin.
 
 ---
 
@@ -39,17 +41,17 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 # Goal
 - To use 3 NOSQL databases in a Blog Application.
 - In the blog application:
-  - Author data is stored in MongoDB  
-  - Blog posts data is stored in Redis
-  - Neo4j for Author-Blog post relation
-  - Author session is stored in Riak (back up for Neo4j)
+  - Author's data is stored in MongoDB.  
+  - Blog posts data is stored in Redis.
+  - Neo4j for Author-Blog post relation.
+  - Author session is stored in Riak (back up for Neo4j).
  
 ---
  
 # NOSQl Databases Functions
-- MongoDB - Storing Author's Data 
-- Redis - For storing the Data of Blog Post using key-value pair 
-- Neo4j - Storing relationship between Authors and their posts
+- MongoDB - Storing Author's Data.
+- Redis - For storing the Data of Blog Post using key-value pair.
+- Neo4j - Storing relationship between Authors and their posts.
 
 ---
 
@@ -60,30 +62,30 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 
 ---
 
-## Why are we using these 3 Databases? (2)
-### MongoDB:
-- We have a dynamic schema
-- We can easily add/delete the new fields to our Author's data
-- Whole structure of our Author's data stored can be easily modified
-- Data will be highly available and scalable
+### Why are we using these 3 Databases? (2)
+#### MongoDB:
+- It has a dynamic schema
+- Ease in adding/deleting new fields in Author's data.
+- Structure of Author's data is modifiable.
+- High avaiability and scability of data.
 
 ---
 
-## Why are we using these 3 Databases? (3)
-### Redis
-- Redis is very fast 
-- Making updates in key-value stored blog data is easier 
-- Supports variety of programming languages and data types
-- Atomic execution of commands
+### Why are we using these 3 Databases? (3)
+#### Redis
+- It is very fast.
+- Ease in making updates to blog data stored in key-value store. 
+- Supports various programming languages and data types.
+- Atomic execution of commands.
 
 ---
 
-## Why are we using these 3 Databases? (4)
-### Neo4j
-- Easy to store relationships without using concepts like Foreign Keys 
-- It has more expressive and simpler data model 
-- Other NOSQL databases stores sets of disconnected aggregates hence its difficult to store connected data in them
-- Easy to traverse in among connected values using cypher query and find insights 
+### Why are we using these 3 Databases? (4)
+#### Neo4j
+- Easy to store relationships without using concepts like Foreign Keys.
+- Its data model is simple and expressive.
+- Other NOSQL databases store sets of disconnected aggregates; hence its difficult to store connected data in them.
+- Easy to traverse in among connected values using cypher query and find insights.
 
 ---
 
