@@ -11,12 +11,22 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 ---
 
 # Agenda
+- Blog application
 - Problem statement
 - Goal
 - NOSQl Databases Functions
 - Why are we using these Databases?
 - Technology stack
 - Plan
+
+---
+
+# Blog application
+- It is created using Node.js, HTML5 and CSS 3.
+- Features: 
+  - Create a Blog post   
+  - Modify contents of Blog post
+  - User accounts i.e. Author
 
 ---
 
@@ -27,16 +37,15 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 ---
 
 # Goal
-#### To use 3 NOSQL databases in a Blog Application.
-We wish to implement a Blog Application that is connected to 3 NOSQL databases (MongoDB,Redis,Neo4j) performing 
-storage for various parts of the application.</br>
-Here Author can:
- - Create a Blog page   
- - Modify contents of Blog page
- 
-The Blog website is created using Node.js and we use HTML and CSS 3 for its formatting.
+- To use 3 NOSQL databases in a Blog Application.
+- In the blog application:
+  - Author data is stored in MongoDB  
+  - Blog posts data is stored in Redis
+  - Neo4j for Author-Blog post relation
+  - Author session is stored in Riak (back up for Neo4j)
  
  ---
+ 
 # NOSQl Databases Functions
 - MongoDB - Storing Author's Data 
 - Redis - For storing the Data of Blog Post using key-value pair 
@@ -44,19 +53,32 @@ The Blog website is created using Node.js and we use HTML and CSS 3 for its form
 
 ---
 
-# Why are we using these Databases?
-### MongoDB:
+# Why are we using these 3 Databases?
+- MongoDB
+- Redis
+- Neo4j
+
+---
+
+# Why are we using these 3 Databases? (2)
+## MongoDB:
 - We have a dynamic schema
 - We can easily add/delete the new fields to our Author's data
 - Whole structure of our Author's data stored can be easily modified
 - Data will be highly available and scalable
 
+---
+
+# Why are we using these 3 Databases? (3)
 ## Redis
 - Redis is very fast 
 - Making updates in key-value stored blog data is easier 
 - Supports variety of programming languages and data types
 - Atomic execution of commands
 
+---
+
+# Why are we using these 3 Databases? (4)
 ## Neo4j
 - Easy to store relationships without using concepts like Foreign Keys 
 - It has more expressive and simpler data model 
@@ -64,8 +86,9 @@ The Blog website is created using Node.js and we use HTML and CSS 3 for its form
 - Easy to traverse in among connected values using cypher query and find insights 
 
 ---
+
 # Technology stack
-- Node.js
+- Node.js & Python
 - HTML 5, CSS 3
 - Documentation
   - Markdown ((GitHub-Flavored) Markdown Editor, Atom)
@@ -73,16 +96,17 @@ The Blog website is created using Node.js and we use HTML and CSS 3 for its form
   - Wiki (if time permits)
 
 ---
+
 # Plan
-Task | week number
+Task | Week number
 ------------ | ------------- 
-Kick-off meeting | week 1
-Literature research | week 1, 2
-Tasks discussed/Implementaiion starting | week 2
-Pitch presentation | week 2
-Reviews of initial implementation | week 3
-Final Implementation | week 4,5
-Final presentation | week 6
+Kick-off meeting | Week 1
+Literature research | Week 1, 2
+Tasks discussed & Initial mplementaiion | Week 2
+Pitch presentation | Week 2
+Reviews of initial implementation | Week 3
+Final Implementation | Week 4,5
+Final presentation | Week 6
 
 ---
 
