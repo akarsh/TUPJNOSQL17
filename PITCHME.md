@@ -32,7 +32,7 @@ Sonali Bhatnagar
 
 ---
 
-# Problem statement
+### Problem statement
 - Is it possible to use 3 NOSQL databases in a blog application ?
 - Which parts of the blog application should use which NOSQL database?
 
@@ -48,7 +48,7 @@ Sonali Bhatnagar
  
 ---
  
-# NOSQl Databases Functions
+## NOSQl Databases Functions
 - MongoDB - Storing Author's Data.
 - Redis - For storing the Data of Blog Post using key-value pair.
 - Neo4j - Storing relationship between Authors and their posts.
@@ -99,7 +99,7 @@ Sonali Bhatnagar
 
 ---
 
-# Plan
+### Plan
 Task | Week number
 ------------ | ------------- 
 Kick-off meeting | Week 1
