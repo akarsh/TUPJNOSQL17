@@ -2,4 +2,3 @@ theme : white
 slide-number : true
 logo : images/Untitled.png
 theme-override : PITCHME.css
-vertical-center : false
