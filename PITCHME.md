@@ -53,15 +53,15 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 
 ---
 
-# Why are we using these 3 Databases?
+## Why are we using these 3 Databases?
 - MongoDB
 - Redis
 - Neo4j
 
 ---
 
-# Why are we using these 3 Databases? (2)
-## MongoDB:
+## Why are we using these 3 Databases? (2)
+### MongoDB:
 - We have a dynamic schema
 - We can easily add/delete the new fields to our Author's data
 - Whole structure of our Author's data stored can be easily modified
@@ -69,8 +69,8 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 
 ---
 
-# Why are we using these 3 Databases? (3)
-## Redis
+## Why are we using these 3 Databases? (3)
+### Redis
 - Redis is very fast 
 - Making updates in key-value stored blog data is easier 
 - Supports variety of programming languages and data types
@@ -78,8 +78,8 @@ Akarsh Seggemu, Budankailu Sameer Kumar Subudhi and Sonali Bhatnagar
 
 ---
 
-# Why are we using these 3 Databases? (4)
-## Neo4j
+## Why are we using these 3 Databases? (4)
+### Neo4j
 - Easy to store relationships without using concepts like Foreign Keys 
 - It has more expressive and simpler data model 
 - Other NOSQL databases stores sets of disconnected aggregates hence its difficult to store connected data in them
