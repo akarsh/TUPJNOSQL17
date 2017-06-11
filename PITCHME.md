@@ -64,4 +64,6 @@ Final presentation | week 6
 
 ---
 
-# Thank you & Questions ?
+Thank you <br />
+& <br />
+Questions ?
