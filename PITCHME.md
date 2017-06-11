@@ -100,7 +100,7 @@ Sonali Bhatnagar
 ---
 
 ### Plan
-Task | Week number
+Task | Week no.
 ------------ | ------------- 
 Kick-off meeting | Week 1
 Literature research | Week 1, 2
