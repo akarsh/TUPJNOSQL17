@@ -47,13 +47,6 @@ Sonali Bhatnagar
   - Author session is stored in Riak (back up for Neo4j).
  
 ---
- 
-## NOSQl Databases Functions
-- MongoDB - Storing Author's Data.
-- Redis - For storing the Data of Blog Post using key-value pair.
-- Neo4j - Storing relationship between Authors and their posts.
-
----
 
 ## Why are we using these 3 Databases?
 - MongoDB
