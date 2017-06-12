@@ -48,9 +48,8 @@ Sonali Bhatnagar
 ---
 
 ## Why are we using these 3 Databases?
-- MongoDB
-- Redis
-- Neo4j
+![](images/DatabaseDiagram.png)
+
 
 ---
 
