@@ -13,6 +13,9 @@ var errorHandler = require('errorhandler');
 var cookieParser = require('cookie-parser');
 var fileUpload = require('express-fileupload');
 var MongoStore = require('connect-mongo')(session);
+// Redis client creation
+var redis = require('redis');
+var client = redis.createClient();
 
 var app = express();
 
@@ -36,7 +39,7 @@ var dbName = process.env.DB_NAME || 'blog-authors';
 
 var dbURL = 'mongodb://'+dbHost+':'+dbPort+'/'+dbName;
 if (app.get('env') == 'live'){
-// prepend url with authentication credentials // 
+// prepend url with authentication credentials //
 	dbURL = 'mongodb://'+process.env.DB_USER+':'+process.env.DB_PASS+'@'+dbHost+':'+dbPort+'/'+dbName;
 }
 
@@ -48,6 +51,11 @@ app.use(session({
 	store: new MongoStore({ url: dbURL })
 	})
 );
+
+// redis connection
+client.on('connect', function() {
+    console.log('connected to redis');
+});
 
 require('./app/server/routes')(app);
 

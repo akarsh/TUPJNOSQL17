@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 	var hc = new HomeController();
 	var av = new AccountValidator();
-	
+
 	$('#account-form').ajaxForm({
 		beforeSubmit : function(formData, jqForm, options){
 			if (av.validateForm() == false){
@@ -28,7 +28,7 @@ $(document).ready(function(){
 	$('#name-tf').focus();
 
 // customize the account settings form //
-	
+
 	$('#account-form h2').text('Account Settings');
 	$('#account-form #sub1').text('Here are the current settings for your account.');
 	$('#user-tf').attr('disabled', 'disabled');

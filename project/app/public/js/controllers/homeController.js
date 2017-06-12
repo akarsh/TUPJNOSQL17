@@ -4,6 +4,12 @@ function HomeController()
 // bind event listeners to button clicks //
 	var that = this;
 
+// handle user login //
+$('#btn-user').click(function(){window.location.href = '/user';});
+
+// handle account settings //
+$('#btn-accountsettings').click(function(){window.location.href = '/home';});
+
 // handle user logout //
 	$('#btn-logout').click(function(){ that.attemptLogout(); });
 

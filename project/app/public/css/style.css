@@ -89,6 +89,12 @@ h6 {
 #account-form-container form {
   width: 460px;
 }
+#user-details {
+  margin: 100px;
+}
+#main {
+  margin: 100px;
+}
 /*
 	modal windows
 */

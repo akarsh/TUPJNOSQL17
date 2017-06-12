@@ -6,15 +6,17 @@ block content
 	nav.navbar.navbar-default.navbar-fixed-top
 		.container
 			.navbar-header
-				.navbar-brand Account Settings
+				.navbar-brand Main
 				.navbar-btn#btn-user.btn.btn-default
 					| User details
+				.navbar-btn#btn-accountsettings.btn.btn-default
+					| Account settings
 			ul.nav.navbar-nav.navbar-right
 				li
 					.navbar-btn#btn-logout.btn.btn-default
 						| Sign Out
 
-	include account
+	include main
 	include modals/alert
 	include modals/confirm
 

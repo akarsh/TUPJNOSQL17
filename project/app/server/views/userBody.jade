@@ -4,19 +4,19 @@
 // store the userId on the client side in a hidden input field //
 input(type='hidden', value= user._id)#userId
 
-#account-form-container.center-vertical
-	div
+#user-details
+
 		table
 			tbody
 				tr
-					td 
+					td
 						tr
-							td	Tags: 
+							td	Tags:
 								each tag in user.tags
 									td #{tag}
 				tr
 					td
-						tr 
+						tr
 							td "LATEST BLOGS"
 						each blogpost in user.blogposts
 							tr
@@ -28,11 +28,10 @@ input(type='hidden', value= user._id)#userId
 						tr
 							td ABOUT
 								tr
-									td Country: 
+									td Country:
 									td #{user.country}
 						tr "Contact Details"
 							td
 								tr
-									td Email: 
+									td Email:
 									td #{user.email}
-
