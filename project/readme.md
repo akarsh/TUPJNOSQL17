@@ -6,6 +6,14 @@
 - [Views](server/views/)
 - [Alerts in modals](server/views/modals/)
 
+## NOSQL Databases
+- Redis
+
+		> redis-server
+
+- MongoDB
+
+		> mongod
 
 ### A basic account management system built in Node.js with the following features:
 
