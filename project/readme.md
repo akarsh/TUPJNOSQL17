@@ -1,6 +1,11 @@
-# [Node-Login](https://nodejs-login.herokuapp.com)
+# Project file structure
+- [Application configuration - app.js](app.js)
+- [Stylus style sheet language that compiles down to css - style.styl](public/css/style.styl)
+- [Handles the navigation for major buttons - homeController.js](public/js/controllers/homeController.js)
+- [All file paths of jade files are declared - routes.js](server/routes.js)
+- [Views](server/views/)
+- [Alerts in modals](server/views/modals/)
 
-[![node-login](./readme.img/node-login.jpg?raw=true)](https://nodejs-login.herokuapp.com)
 
 ### A basic account management system built in Node.js with the following features:
 
