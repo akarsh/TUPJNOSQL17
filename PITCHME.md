@@ -96,7 +96,7 @@ Task | Week no.
 ------------ | ------------- 
 Kick-off meeting | Week 1
 Literature research | Week 1, 2
-Tasks discussed & Initial implementation | Week 2
+Initial implementation | Week 2
 Pitch presentation | Week 2
 Reviews of initial implementation | Week 3
 Final Implementation | Week 4,5
