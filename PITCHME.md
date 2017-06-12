@@ -58,7 +58,7 @@ Sonali Bhatnagar
 - It has a dynamic schema
 - Ease in adding/deleting new fields in Author's data.
 - Structure of Author's data is modifiable.
-- High avaiability and scability of data.
+- High availability and scability of data.
 
 ---
 
