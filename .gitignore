@@ -1,0 +1,4 @@
+.DS_Store
+node_modules
+project/app/server/modules/email-settings-mine.js
+project/app/server/userImages/*
