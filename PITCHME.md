@@ -16,7 +16,6 @@ Sonali Bhatnagar
 - Blog application
 - Problem statement
 - Goal
-- NOSQl Databases Functions
 - Why are we using these Databases?
 - Technology stack
 - Plan
