@@ -66,7 +66,7 @@ Sonali Bhatnagar
 ### Why are we using these 3 Databases? (3)
 #### Redis
 - It is very fast.
-- Ease in making updates to blog data stored in key-value store. 
+- Ease in making updates to blog posts data stored in key-value store. 
 - Supports various programming languages and data types.
 - Atomic execution of commands.
 
