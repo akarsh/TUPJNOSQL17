@@ -9,11 +9,11 @@
 ## NOSQL Databases
 - Redis
 
-		> redis-server
+		$ redis-server
 
 - MongoDB
 
-		> mongod
+		$ mongod
 
 ### A basic account management system built in Node.js with the following features:
 
