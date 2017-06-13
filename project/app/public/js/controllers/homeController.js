@@ -10,6 +10,12 @@ $('#btn-user').click(function(){window.location.href = '/user';});
 // handle account settings //
 $('#btn-accountsettings').click(function(){window.location.href = '/home';});
 
+//handle navigation to main page //
+$('#btn-mainpage').click(function(){window.location.href = '/mainPage';});
+
+//handle navigation to blog page //
+$('#btn-blogpost').click(function(){window.location.href = '/blogPost';});
+
 // handle user logout //
 	$('#btn-logout').click(function(){ that.attemptLogout(); });
 

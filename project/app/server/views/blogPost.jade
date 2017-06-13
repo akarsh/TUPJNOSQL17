@@ -1,0 +1,46 @@
+extends layout
+
+block content
+
+	nav.navbar.navbar-default.navbar-fixed-top
+		.container
+			.navbar-header
+				.navbar-brand Account Settings
+				.navbar-btn#btn-user.btn.btn-default
+					| User details
+				.navbar-btn#btn-mainpage.btn.btn-default
+					| Main Page
+			ul.nav.navbar-nav.navbar-right
+				li
+					.navbar-btn#btn-logout.btn.btn-default
+						| Sign Out
+
+	// preset form values if we receive a userdata object //
+	- user = typeof(udata) != 'undefined' ? udata : { }
+	// store the userId on the client side in a hidden input field //
+	input(type='hidden', value= user._id)#userId					
+	
+	#blog-form-container
+		form(method="post",name="blogDataForm").form-horizontal.well
+			h1 Create your Blog Post
+			hr
+			.form-group
+				label.control-label.col-sm-3 Title
+				.col-sm-9
+					input#title-tf(type='text', name='title', value= 'Enter title of your blog')
+
+			.form-group
+				label.control-label.col-sm-3 Blog Data
+				.col-sm-9
+					textarea(id="theblogTextarea",rows="20",cols="60",form="blogDataForm") Enter your blog data here
+			hr
+			.form-buttons
+				input(type='submit',value='Create your blog')
+			.clearfix
+block scripts
+	script(src='/vendor/jquery-2.2.3.min.js')
+	script(src='/vendor/jquery.form.min.js')
+	script(src='/vendor/bootstrap.min.js')
+	script(src='/js/views/home.js')
+	script(src='/js/controllers/homeController.js')
+	script(src='/js/form-validators/accountValidator.js')

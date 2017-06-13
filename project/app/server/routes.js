@@ -98,11 +98,21 @@ module.exports = function(app) {
 
 	app.get('/mainPage', function(req, res) {
 		if (req.session.user == null){
-	// if user is not logged-in redirect back to login page //
 			res.redirect('/');
 		}	else{
 			res.render('mainPage', {
 				title : 'main',
+				udata : req.session.user,
+			});
+		}
+	});
+
+	app.get('/blogPost', function(req, res) {
+		if (req.session.user == null){
+			res.redirect('/');
+		}	else{
+			res.render('blogPost', {
+				title : 'Blog Data',
 				udata : req.session.user,
 			});
 		}

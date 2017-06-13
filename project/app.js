@@ -16,7 +16,21 @@ var MongoStore = require('connect-mongo')(session);
 // Redis client creation
 var redis = require('redis');
 var client = redis.createClient();
+client.on('ready',function() {
+ console.log("Redis is ready");
+});
 
+client.on('error',function() {
+ console.log("Error in Redis");
+});
+client.set("language","nodejs",function(err,reply) {
+ console.log(err);
+ console.log(reply);
+});
+client.get("language",function(err,reply) {
+ console.log(err);
+ console.log(reply);
+});
 var app = express();
 
 app.locals.pretty = true;

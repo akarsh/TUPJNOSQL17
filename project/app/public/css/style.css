@@ -89,6 +89,11 @@ h6 {
 #account-form-container form {
   width: 460px;
 }
+#blog-form-container form {
+  width: 100%;
+  padding: 50px;
+  background: #ff0;
+}
 #user-details {
   margin: 100px;
 }
