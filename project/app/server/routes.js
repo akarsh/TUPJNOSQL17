@@ -2,6 +2,7 @@ var CT = require('./modules/country-list');
 var AM = require('./modules/account-manager');
 var EM = require('./modules/email-dispatcher');
 var IM = require('./modules/image-manager');
+var BM = require('./modules/blog-manager');
 
 module.exports = function(app) {
 
@@ -117,6 +118,14 @@ module.exports = function(app) {
 			});
 		}
 	});
+
+	app.post('/blogPost', function(req, res){
+		BM.addBlog({
+			blogTitle : req.body['blogTitle'],
+			blogTextarea : req.body['blogTextarea']
+		});
+	});
+
 
 	app.get('/accountSettings', function(req, res) {
 		if (req.session.user == null){

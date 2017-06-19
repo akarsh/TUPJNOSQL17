@@ -23,14 +23,7 @@ client.on('ready',function() {
 client.on('error',function() {
  console.log("Error in Redis");
 });
-client.set("language","nodejs",function(err,reply) {
- console.log(err);
- console.log(reply);
-});
-client.get("language",function(err,reply) {
- console.log(err);
- console.log(reply);
-});
+
 var app = express();
 
 app.locals.pretty = true;
