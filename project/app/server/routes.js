@@ -101,9 +101,11 @@ module.exports = function(app) {
 		if (req.session.user == null){
 			res.redirect('/');
 		}	else{
+			var blogTitle = BM.getBlog();
 			res.render('mainPage', {
 				title : 'main',
-				udata : req.session.user,
+				blogData : blogTitle,
+				udata : req.session.user
 			});
 		}
 	});

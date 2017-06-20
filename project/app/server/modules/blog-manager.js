@@ -1,17 +1,47 @@
+//Redis connection
 var redis = require("redis"),
     client = redis.createClient();
-
-// if you'd like to select database 3, instead of 0 (default), call
-// client.select(3, function() { /* ... */ });
 
 client.on("error", function (err) {
     console.log("Error " + err);
 });
 
-
+var blogTitleReply = [];
+var blogTextareaReply = [];
 
 exports.addBlog = function(newData, callback)
 {
-	client.set('blogTittle', newData.blogTitle, redis.print);
-	client.set('blogData', newData.blogTextarea, redis.print);
+	client.incr('id', function(err, id) {
+	var blogId = id;
+	client.sadd("blogPost", blogId);	
+    client.hmset(blogId, 'blogTitle', newData.blogTitle, 'blogTextarea', newData.blogTextarea);
+});
+}
+
+exports.getBlog = function(newData, callback)
+{
+
+	client.smembers("blogPost", function(err,results) {
+
+    var blogPost = results;
+  		
+  	blogTitleReply= [];
+  	blogTextareaReply = [];
+
+    for (var i in blogPost) {
+     client.hget(blogPost[i],"blogTitle", function(err,reply) {
+        blogTitleReply.push({blogTitle: reply.toString()});
+    });
+
+
+    client.hget(blogPost[i],"blogTextarea", function(err,reply) {
+        blogTextareaReply.push({blogTextarea: reply.toString()});
+    });
+    }
+});
+  return blogTitleReply;
+
+ // console.log(blogTitleReply) 
+ // console.log(blogTextareaReply) 
+	
 }
