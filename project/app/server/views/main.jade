@@ -6,3 +6,20 @@ input(type='hidden', value= user._id)#userId
 
 #main
 h1 Welcome to Blog application
+a(href="/blogPost") Click here to create your own Blog Page
+
+#user-details
+		table
+			tbody
+				
+				tr
+					td
+						tr
+							td "LATEST BLOGS"
+						each blogTitle in blogData
+							tr
+								td #{blogTitle.blogTitle}
+            
+                                     
+                                    
+

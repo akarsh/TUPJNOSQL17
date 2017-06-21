@@ -13,9 +13,16 @@ var errorHandler = require('errorhandler');
 var cookieParser = require('cookie-parser');
 var fileUpload = require('express-fileupload');
 var MongoStore = require('connect-mongo')(session);
-// Redis client creation
+/*// Redis client creation
 var redis = require('redis');
 var client = redis.createClient();
+client.on('ready',function() {
+ console.log("Redis is ready");
+});
+
+client.on('error',function() {
+ console.log("Error in Redis");
+});*/
 
 var app = express();
 
@@ -52,10 +59,10 @@ app.use(session({
 	})
 );
 
-// redis connection
+/*// redis connection
 client.on('connect', function() {
     console.log('connected to redis');
-});
+});*/
 
 require('./app/server/routes')(app);
 

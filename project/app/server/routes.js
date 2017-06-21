@@ -2,6 +2,7 @@ var CT = require('./modules/country-list');
 var AM = require('./modules/account-manager');
 var EM = require('./modules/email-dispatcher');
 var IM = require('./modules/image-manager');
+var BM = require('./modules/blog-manager');
 
 module.exports = function(app) {
 
@@ -98,15 +99,35 @@ module.exports = function(app) {
 
 	app.get('/mainPage', function(req, res) {
 		if (req.session.user == null){
-	// if user is not logged-in redirect back to login page //
 			res.redirect('/');
 		}	else{
+			var blogTitle = BM.getBlog();
 			res.render('mainPage', {
 				title : 'main',
+				blogData : blogTitle,
+				udata : req.session.user
+			});
+		}
+	});
+
+	app.get('/blogPost', function(req, res) {
+		if (req.session.user == null){
+			res.redirect('/');
+		}	else{
+			res.render('blogPost', {
+				title : 'Blog Data',
 				udata : req.session.user,
 			});
 		}
 	});
+
+	app.post('/blogPost', function(req, res){
+		BM.addBlog({
+			blogTitle : req.body['blogTitle'],
+			blogTextarea : req.body['blogTextarea']
+		});
+	});
+
 
 	app.get('/accountSettings', function(req, res) {
 		if (req.session.user == null){
