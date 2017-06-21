@@ -1,3 +1,4 @@
+
 extends layout
 
 block content
@@ -18,8 +19,8 @@ block content
 	// preset form values if we receive a userdata object //
 	- user = typeof(udata) != 'undefined' ? udata : { }
 	// store the userId on the client side in a hidden input field //
-	input(type='hidden', value=user._id)#userId					
-	
+	input(type='hidden', value=user._id)#userId
+
 	#blog-form-container
 		form(method="post",name="blogDataForm").form-horizontal.well
 			h1 Create your Blog Post
@@ -37,7 +38,9 @@ block content
 			.form-buttons
 				input#blog-btn-submit(type='submit',value='Create your blog')
 			.clearfix
-	include modals/confirm
+
+include modals/confirm
+
 block scripts
 	script(src='/vendor/jquery-2.2.3.min.js')
 	script(src='/vendor/jquery.form.min.js')
