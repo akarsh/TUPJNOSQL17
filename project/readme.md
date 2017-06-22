@@ -1,10 +1,18 @@
 # Project file structure
-- [Application configuration - app.js](app.js)
-- [Stylus style sheet language that compiles down to css - style.styl](public/css/style.styl)
-- [Handles the navigation for major buttons - homeController.js](public/js/controllers/homeController.js)
-- [All file paths of jade files are declared - routes.js](server/routes.js)
-- [Views](server/views/)
-- [Alerts in modals](server/views/modals/)
+
+* `app.js` - [Application starting point](app.js)
+* `app/server/routes.js` - [URL(HTTP method) to controller mapping and all file paths of jade files are declared](app/server/routes.js)
+* `app/server/views/` - [Contains the view templates for the application](app/server/views/)
+* `public/js/controllers/homeController.js` - [Handles the navigation for major buttons](app/public/js/controllers/homeController.js)
+* `app/server/views/modals/` - [Alerts in modals](app/server/views/modals/)
+* `app/server/modules/` - [Contains various module/functional managers](app/server/modules/)
+* `app/public/` - [Contains the js libraries and css dependencies used in the view templates](app/public/)
+* `app/public/css/style.styl` - [Stylus style sheet language that compiles down to css](app/public/css/style.styl)
+* `node_modules/` - [Contains all the downloaded dependent node modules](node_modules/)
+* `globalconfig.js` - [Contains all the global level application configurations](globalconfig.js)
+* `package.json` - [Contains the dependency configuration for npm managed node modules](package.json)
+* `/images/` - Contains the user uploaded profile pictures
+
 
 ## NOSQL Databases
 - Redis
