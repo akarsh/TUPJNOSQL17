@@ -1,4 +1,5 @@
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/akarsh/TUPJNOSQL17/master?grs=github&t=white)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
 # TUPJNOSQL17
 TU Berlin Project NOSQL Databases Summer Semester 2017   
