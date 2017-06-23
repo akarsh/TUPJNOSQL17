@@ -21,8 +21,28 @@
 
 - MongoDB
 
-		$ mongod
+		$ mongod --replSet myDevReplSet
 
+	- mongo-shell
+
+		$ rs.initiate()
+
+
+- Neo4j
+
+	start the community edition of neo4j
+	- in terminal or shell
+		
+		$ mongo-connector -m localhost:27017 -t http://localhost:7474/db/data -d neo4j_doc_manager
+		
+The mongo-connector command is explained here,
+
+    -m provides the MongoDB endpoint
+    -t specifies the Neo4j endpoint
+    -d specifies Neo4j Doc Manager as the doc manager
+
+
+		
 ### A basic account management system built in Node.js with the following features:
 
 * New User Account Creation
