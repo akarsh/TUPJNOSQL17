@@ -6,7 +6,7 @@
 * `public/js/controllers/homeController.js` - [Handles the navigation for major buttons](app/public/js/controllers/homeController.js)
 * `app/server/views/modals/` - [Alerts in modals](app/server/views/modals/)
 * `app/server/modules/` - [Contains various module/functional managers](app/server/modules/)
-* `app/server/userImages/` - Contains the user uploaded profile pictures
+* `app/server/userImages/` - [Contains the user uploaded profile pictures](app/server/userImages/)
 * `app/public/` - [Contains the js libraries and css dependencies used in the view templates](app/public/)
 * `app/public/css/style.styl` - [Stylus style sheet language that compiles down to css](app/public/css/style.styl)
 * `node_modules/` - [Contains all the downloaded dependent node modules](node_modules/)
