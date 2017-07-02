@@ -1,4 +1,15 @@
 .DS_Store
-node_modules
+
+# node modules
+project/node_modules/*
+
+#email settings
 project/app/server/modules/email-settings-mine.js
+
+# user images
 project/app/server/userImages/*
+
+# graph db
+project/graphdb
+
+*.js
