@@ -2,6 +2,7 @@
 	* Node.js Login Boilerplate
 	* More Info : http://kitchen.braitsch.io/building-a-login-system-in-node-js-and-mongodb/
 	* Copyright (c) 2013-2016 Stephen Braitsch
+	* Copyright (c) 2017 Akarsh Seggemu
 **/
 
 require('./globalconfig');
@@ -13,6 +14,12 @@ var errorHandler = require('errorhandler');
 var cookieParser = require('cookie-parser');
 var fileUpload = require('express-fileupload');
 var MongoStore = require('connect-mongo')(session);
+// mongoose
+var mongoose = require('mongoose');
+// neo4j
+var neo4j    = require('neo4j');
+// moneo
+var moneo = require("moneo")({url:'http://localhost:7474'});
 
 var app = express();
 
@@ -28,11 +35,10 @@ app.use(require('stylus').middleware({ src: __dirname + '/app/public' }));
 app.use(express.static(__dirname + '/app/public'));
 app.use(express.static(__dirname + '/app/server/userImages'));
 
-// build mongo database connection url //
-
+// build mongo database connection url
 var dbHost = process.env.DB_HOST || 'localhost'
 var dbPort = process.env.DB_PORT || 27017;
-var dbName = process.env.DB_NAME || 'blog-authors';
+var dbName = process.env.DB_NAME || 'blog-mongoose';
 
 var dbURL = 'mongodb://'+dbHost+':'+dbPort+'/'+dbName;
 if (app.get('env') == 'live'){

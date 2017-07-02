@@ -12,7 +12,7 @@
   "keywords": [
     "node",
     "neo4j",
-    "mongodb",
+    "mongoose",
     "moneo"
   ],
   "dependencies": {
@@ -27,13 +27,12 @@
     "jade": "1.11.0",
     "moment": "2.10.3",
     "moneo": "^1.1.2",
-    "mongodb": "2.0.45",
-    "mongoose": "^4.10.8",
+    "mongoose": "^4.0.0",
     "redis": "^2.7.1",
     "stylus": "0.52.4"
   },
   "engines": {
-    "node": "4.2.1"
+    "node": "6.11.0"
   },
   "scripts": {
     "start": "node app.js"
