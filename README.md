@@ -14,9 +14,6 @@ This code is part of,
     Workload: 2 SWS
     ECTS: 3 LP
 
-### Project
-This folder containts our project files. More information on how-to for the project folder follow steps from the [project documentation](project/readme.md)
-
 ## Table of Contents
 - [Presentation](#presentation)
 - [Project](#project)
@@ -33,6 +30,9 @@ Here is our presentation public url https://gitpitch.com/akarsh/TUPJNOSQL17
     - [PITCHME.md](PITCHME.md) is the presentation file.
     - [PITCHME.yaml](PITCHME.yaml) is the configuration file.
     - [PITCHME.css](PITCHME.css) is the theme setting file.
+    
+### Project
+This folder containts our project files. More information on how-to for the project folder follow steps from the [project documentation](project/readme.md)
 
 ### Markdown
 [(GitHub-Flavored) Markdown Editor](https://jbt.github.io/markdown-editor/) will be used. As, [Gitpitch](https://gitpitch.com) does not support markdown provided by Github service.
