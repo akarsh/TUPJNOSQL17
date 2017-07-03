@@ -96,7 +96,7 @@ If you don't want to use moneo library and would like to use the mongoconnector 
 
 		$ node app
 		
-For development use nodemon.
+	For development use nodemon.
 		
 		$nodemon app
 		
