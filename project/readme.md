@@ -1,6 +1,6 @@
 # Project file structure
 
-* [`app.js`]((app.js) - Application starting point
+* [`app.js`](app.js) - Application starting point
 * [`app/server/routes.js`](app/server/routes.js) - URL(HTTP method) to controller mapping and all file paths of jade files are declared
 * [`app/server/views/`](app/server/views/) - Contains the view templates for the application
 * [`public/js/controllers/homeController.js`](app/public/js/controllers/homeController.js) - Handles the navigation for major buttons
