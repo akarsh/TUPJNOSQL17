@@ -1,47 +1,55 @@
 # Project file structure
 
-* `app.js` - [Application starting point](app.js)
-* `app/server/routes.js` - [URL(HTTP method) to controller mapping and all file paths of jade files are declared](app/server/routes.js)
-* `app/server/views/` - [Contains the view templates for the application](app/server/views/)
-* `public/js/controllers/homeController.js` - [Handles the navigation for major buttons](app/public/js/controllers/homeController.js)
-* `app/server/views/modals/` - [Alerts in modals](app/server/views/modals/)
-* `app/server/modules/` - [Contains various module/functional managers](app/server/modules/)
-* `app/server/userImages/` - [Contains the user uploaded profile pictures](app/server/userImages/)
-* `app/public/` - [Contains the js libraries and css dependencies used in the view templates](app/public/)
-* `app/public/css/style.styl` - [Stylus style sheet language that compiles down to css](app/public/css/style.styl)
-* `node_modules/` - [Contains all the downloaded dependent node modules](node_modules/)
-* `globalconfig.js` - [Contains all the global level application configurations](globalconfig.js)
-* `package.json` - [Contains the dependency configuration for npm managed node modules](package.json)
+* [`app.js`](app.js) - Application starting point
+* [`app/server/routes.js`](app/server/routes.js) - URL(HTTP method) to controller mapping and all file paths of jade files are declared
+* [`app/server/views/`](app/server/views/) - Contains the view templates for the application
+* [`public/js/controllers/homeController.js`](app/public/js/controllers/homeController.js) - Handles the navigation for major buttons
+* [`app/server/views/modals/`](app/server/views/modals/) - Alerts in modals
+* [`app/server/modules/`](app/server/modules/) - Contains various module/functional managers
+* [`app/server/userImages/`](app/server/userImages/) - Contains the user uploaded profile pictures
+* [`app/public/`](app/public/) - Contains the js libraries and css dependencies used in the view templates
+* [`app/public/css/style.styl`](app/public/css/style.styl) - Stylus style sheet language that compiles down to css
+* [`node_modules/`](node_modules/) - Contains all the downloaded dependent node modules
+* [`globalconfig.js`](globalconfig.js) - Contains all the global level application configurations
+* [`package.json`](package.json) - Contains the dependency configuration for npm managed node modules
 
 
 
 ## NOSQL Databases
+The following databases must be started 
 - Redis
 
 		$ redis-server
 
 - MongoDB
 
-		$ mongod --replSet myDevReplSet
-
-	- mongo-shell
-
-		$ rs.initiate()
-
-
+		$ mongod 
+		
 - Neo4j
 
 	start the community edition of neo4j
-	- in terminal or shell
+
+### Optional:
+If you don't want to use moneo library and would like to use the mongoconnector and neo4j docmanager. Here is the procedure,
+
+1. Start the MongoDB with replicate set
+
+		$ mongod --replSet myDevReplSet
+
+2. Then, star the mongo shell in terminal
+
+		$ mongo
+		$ rs.initiate()	
+	
+3. Make sure neo4j is started and then, in terminal
 		
 		$ mongo-connector -m localhost:27017 -t http://localhost:7474/db/data -d neo4j_doc_manager
 		
-The mongo-connector command is explained here,
+    mongo-connector command is explained here,
 
-    -m provides the MongoDB endpoint
-    -t specifies the Neo4j endpoint
-    -d specifies Neo4j Doc Manager as the doc manager
-
+    	-m provides the MongoDB endpoint
+    	-t specifies the Neo4j endpoint
+    	-d specifies Neo4j Doc Manager as the doc manager
 
 		
 ### A basic account management system built in Node.js with the following features:
@@ -67,22 +75,34 @@ The mongo-connector command is explained here,
 
 
 ## Installation & Setup
-1. Install [Node.js](https://nodejs.org/) & [MongoDB](https://www.mongodb.org/) if you haven't already.
-2. Clone this repository and install its dependencies.
-		
-		> git clone git://github.com/braitsch/node-login.git node-login
-		> cd node-login
-		> npm install
-		
-3. In a separate shell start the MongoDB daemon.
+1. Install [Node.js](https://nodejs.org/) and [MongoDB](https://www.mongodb.org/) if you haven't already.
+2. Go into the project folder.
 
-		> mongod
+		$ cd project
+		
+3. Install the dependencies.	
+
+		$ npm install -save
+		
+3. In a separate shell start the MongoDB daemon, Redis DB, Neo4j DB.
+
+		$ mongod
+		
+		$ redis-server
+		
+		start the community edition of neo4j
 
 4. From within the node-login directory, start the server.
 
-		> node app
+		$ node app
 		
-5. Open a browser window and navigate to: [http://localhost:3000](http://localhost:3000)
+	For development use nodemon.
+		
+		$nodemon app
+		
+5. Open a browser window and navigate to: 
+
+		[http://localhost:3000](http://localhost:3000)
 
 ## Password Retrieval
 
@@ -96,5 +116,6 @@ To do this on OSX you can simply add them to your .profile or .bashrc file.
 
 [![node-login](./readme.img/retrieve-password.jpg?raw=true)](https://nodejs-login.herokuapp.com)
 
-# Regarding architecture
+### Recomended literature
+* Regarding architecture
 [some thoughts about the app's architecture.](http://kitchen.braitsch.io/building-a-login-system-in-node-js-and-mongodb/)
