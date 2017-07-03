@@ -100,9 +100,7 @@ If you don't want to use moneo library and would like to use the mongoconnector 
 		
 		$nodemon app
 		
-5. Open a browser window and navigate to: 
-
-		[http://localhost:3000](http://localhost:3000)
+5. Open a browser window and navigate to: [http://localhost:3000](http://localhost:3000)
 
 ## Password Retrieval
 
