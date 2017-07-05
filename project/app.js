@@ -13,7 +13,8 @@ var bodyParser = require('body-parser');
 var errorHandler = require('errorhandler');
 var cookieParser = require('cookie-parser');
 var fileUpload = require('express-fileupload');
-var MongoStore = require('connect-mongo')(session);
+// Rethink db session store
+var RDBStore = require('session-rethinkdb')(session);
 // mongoose
 var mongoose = require('mongoose');
 // neo4j
@@ -35,25 +36,27 @@ app.use(require('stylus').middleware({ src: __dirname + '/app/public' }));
 app.use(express.static(__dirname + '/app/public'));
 app.use(express.static(__dirname + '/app/server/userImages'));
 
-// build mongo database connection url
-var dbHost = process.env.DB_HOST || 'localhost'
-var dbPort = process.env.DB_PORT || 27017;
-var dbName = process.env.DB_NAME || 'blog-mongoose';
-
-var dbURL = 'mongodb://'+dbHost+':'+dbPort+'/'+dbName;
-if (app.get('env') == 'live'){
-// prepend url with authentication credentials //
-	dbURL = 'mongodb://'+process.env.DB_USER+':'+process.env.DB_PASS+'@'+dbHost+':'+dbPort+'/'+dbName;
-}
-
+// Rethink db session store
+var r = require('rethinkdbdash')({
+    servers: [
+        {host: 'localhost',
+        port: 28015}
+    ]
+});
+var store = new RDBStore(r,  {
+    browserSessionsMaxAge: 5000, // optional, default is 60000 (60 seconds). Time between clearing expired sessions.
+    table: 'session' // optional, default is 'session'. Table to store sessions in.
+});
 app.use(session({
-	secret: 'faeb4453e5d14fe6f6d04637f78077c76c73d1b4',
-	proxy: true,
-	resave: true,
-	saveUninitialized: true,
-	store: new MongoStore({ url: dbURL })
-	})
-);
+    // https://github.com/expressjs/session#options
+    secret: 'keyboard cat',
+    cookie: {
+        maxAge: 600000
+    },
+    store: store,
+    resave: true,
+    saveUninitialized: true
+}));
 
 require('./app/server/routes')(app);
 
