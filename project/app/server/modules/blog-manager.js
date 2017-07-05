@@ -7,7 +7,8 @@ client.on("error", function (err) {
 
 
 var blogTitleReply = [];
-var blogTextareaReply = [];
+var blogPostKey = [];
+var blogTextareaReply = '';
 
 exports.addBlog = function(newData, callback)
 {
@@ -26,99 +27,26 @@ exports.getBlog = function(newData, callback)
     var blogPost = results;
   		
   	blogTitleReply= [];
-  	blogTextareaReply = [];
     for (var i in blogPost) {
+      blogPostKey.push(blogPost[i]);
        client.hget(blogPost[i],"blogTitle", function(err,reply) {
-          blogTitleReply.push({blogTitle: reply.toString()});
+          blogTitleReply.push(reply.toString());
       });
     }
 });
-  return {blogTitleReply:blogTitleReply.reverse().slice(0,11)};
-}
-
-
-
-exports.getBlogData = function(newData, callback)
-{
-
-  client.smembers("blogPost", function(err,results) {
-
-    var blogPost = results;
-
-    console.log(results, 'sdhfuhsud');
-      
-    blogTitleReply= [];
-    blogTextareaReply = [];
-     for (var i in blogPost) {
-        client.hget(blogPost[i],"blogTextarea", function(err,reply) {
-        blogTextareaReply.push({blogTextarea: reply.toString()});
-    });
-    }
-});
-  return {blogTextareaReply:blogTextareaReply.reverse().slice(0,11)};
-}
-
-
-
-
-// To be implemented
-
-/* 
-
-exports.getBlog = function(newData, callback)
-{
-
-  client.smembers("blogPost", function(err,results) {
-
-    var blogPost = results;
-      
-    blogTitleReply= [];
-    blogTextareaReply = [];
-    blogPostKey = results;
-
-    for (var i in blogPost) {
-     client.hget(blogPost[i],"blogTitle", function(err,reply) {
-        blogTitleReply.push(reply.toString());
-    });
-    }
-});
-
-  const mergeArrToJSON = (a, b) => a.map((item, i) => ({
-    [item]: b[i]
-  }));
-
-  const merge = mergeArrToJSON(blogPostKey.reverse().slice(0,11), blogTitleReply.reverse().slice(0,11));
-
-  return {merge};
-}
-
-
-
-exports.getBlogData = function(newData, callback)
-{
-
-  client.smembers("blogPost", function(err,results) {
-
-    var blogPost = results;
-      
-    blogTitleReply= [];
-    blogTextareaReply = [];
-    blogPostKey = results;
-
-     for (var i in blogPost) {
-        client.hget(blogPost[i],"blogTextarea", function(err,reply) {
-        blogTextareaReply.push(reply.toString());
-    });
-    }
-});
-
-
 const mergeArrToJSON = (a, b) => a.map((item, i) => ({
   [item]: b[i]
 }))
 
-console.log(mergeArrToJSON(blogPostKey.reverse().slice(0,11), blogTextareaReply.reverse().slice(0,11)), 'sidharth');
-
-  return {blogTextareaReply:blogTextareaReply};
+  return {blogTitleReply:blogTitleReply.reverse().slice(0,11), blogId: blogPostKey.reverse().slice(0,11)};
 }
-*/
+exports.getBlogData = function(newData, callback)
+{
+
+ client.hget(newData,"blogTextarea", function(err,reply) {
+      blogTextareaReply = reply.toString();
+ });
+
+ return {blogTextareaReply: blogTextareaReply}
+}
+

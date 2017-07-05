@@ -102,25 +102,27 @@ module.exports = function(app) {
 		if (req.session.user == null){
 			res.redirect('/');
 		}	else{
-			var {blogTitleReply} = BM.getBlog();
+			var {blogTitleReply, blogId} = BM.getBlog();
 			res.render('mainPage', {
 				title : 'main',
 				blogData : blogTitleReply,
+				blogs: blogId,
 				udata : req.session.user
 			});
 		}
 	});
 
-	app.get('/mainPage/:blogTitle', function(req, res) {
+	app.get('/mainPage/:blogId', function(req, res) {
 		if (req.session.user == null){
 			res.redirect('/');
 			}	else{
-				var {blogTextareaReply} = BM.getBlogData();
+				var blogId = req.params.blogId;
+				var {blogTextareaReply} = BM.getBlogData(blogId);
 				res.render('blogPage', {
 					title : 'main',
-					blogDesc: blogTextareaReply,
+					blogTextArea : blogTextareaReply,
 					udata : req.session.user
-		 });
+			});
 		}
 	});
 

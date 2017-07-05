@@ -16,5 +16,5 @@ a(href="/blogPost") Click here to create your own Blog Page
 					td
 						tr
 							td	Blog Title: &nbsp;
-								each blogTitle in blogData
-									a #[a(href=`/mainPage/${blogTitle.blogTitle}`) #{blogTitle.blogTitle}] &nbsp;
+								each blogTitle, index in blogData
+									a #[a(href=`/mainPage/${blogs[index]}`) #{blogTitle}] &nbsp;	
