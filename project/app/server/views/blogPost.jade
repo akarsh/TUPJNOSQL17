@@ -28,6 +28,13 @@ block content
 				label.control-label.col-sm-3 Title
 				.col-sm-9
 					input#title-tf(type='text', name='blogTitle', placeholder= 'Enter title of your blog')
+					
+			.form-group
+				label.control-label.col-sm-3 Location
+				.col-sm-9
+					select.form-control#category-list(name='category')
+						each item in categories
+							option(selected=item.name == user.category)= item.name
 
 			.form-group
 				label.control-label.col-sm-3 Blog Data
@@ -38,7 +45,11 @@ block content
 				input#blog-btn-submit(type='submit',value='Create your blog')
 			.clearfix
 	include modals/confirm
+	include modals/confirm-blog
 block scripts
 	script(src='/vendor/jquery-2.2.3.min.js')
 	script(src='/vendor/jquery.form.min.js')
 	script(src='/vendor/bootstrap.min.js')
+	script(src='/js/views/home.js')
+	script(src='/js/controllers/homeController.js')
+	script(src='/js/form-validators/accountValidator.js')

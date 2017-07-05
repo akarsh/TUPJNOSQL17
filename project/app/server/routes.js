@@ -3,6 +3,7 @@ var AM = require('./modules/account-manager');
 var EM = require('./modules/email-dispatcher');
 var IM = require('./modules/image-manager');
 var BM = require('./modules/blog-manager');
+var CL = require('./modules/category-list');
 
 module.exports = function(app) {
 
@@ -101,12 +102,25 @@ module.exports = function(app) {
 		if (req.session.user == null){
 			res.redirect('/');
 		}	else{
-			var blogTitle = BM.getBlog();
+			var {blogTitleReply} = BM.getBlog();
 			res.render('mainPage', {
 				title : 'main',
-				blogData : blogTitle,
+				blogData : blogTitleReply,
 				udata : req.session.user
 			});
+		}
+	});
+
+	app.get('/mainPage/:blogTitle', function(req, res) {
+		if (req.session.user == null){
+			res.redirect('/');
+			}	else{
+				var {blogTextareaReply} = BM.getBlogData();
+				res.render('blogPage', {
+					title : 'main',
+					blogDesc: blogTextareaReply,
+					udata : req.session.user
+		 });
 		}
 	});
 
@@ -116,14 +130,17 @@ module.exports = function(app) {
 		}	else{
 			res.render('blogPost', {
 				title : 'Blog Data',
-				udata : req.session.user,
+				categories : CL,
+				udata : req.session.user
 			});
 		}
 	});
 
 	app.post('/blogPost', function(req, res){
 		BM.addBlog({
+			userId: req.session.user._id,
 			blogTitle : req.body['blogTitle'],
+			category :req.body['category'],
 			blogTextarea : req.body['blogTextarea']
 		});
 	});

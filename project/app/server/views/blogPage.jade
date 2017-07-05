@@ -5,8 +5,6 @@
 input(type='hidden', value= user._id)#userId
 
 #main
-h1 Welcome to Blog application
-a(href="/blogPost") Click here to create your own Blog Page
 
 #user-details
 
@@ -15,6 +13,6 @@ a(href="/blogPost") Click here to create your own Blog Page
 				tr
 					td
 						tr
-							td	Blog Title: &nbsp;
-								each blogTitle in blogData
-									a #[a(href=`/mainPage/${blogTitle.blogTitle}`) #{blogTitle.blogTitle}] &nbsp;
+							td	Blog Data: &nbsp;
+								each blogData in blogDesc
+									a #{blogData.blogTextarea}  &nbsp;
