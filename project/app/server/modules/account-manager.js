@@ -1,21 +1,14 @@
+require('../../../app');
 
 var crypto 		= require('crypto');
-// mongoose db
-var mongoose 	= require('mongoose');
 var moment 		= require('moment');
 
-var moneo = require("moneo")({url:'http://localhost:7474'});
-
-// connect to mongoose database
-var options = { server: { socketOptions: { keepAlive: 1 } } };
-var db = mongoose.connect('mongodb://localhost/blog-mongoose', options).connection;
-
-db.open(function(e, d){
+mongoosedb.open(function(e, d){
 	if (e) {
 		console.log(e);
 	} else {
 		if (process.env.NODE_ENV == 'live') {
-			db.authenticate(process.env.DB_USER, process.env.DB_PASS, function(e, res) {
+			mongoosedb.authenticate(process.env.DB_USER, process.env.DB_PASS, function(e, res) {
 				if (e) {
 					console.log('mongo :: error: not authenticated', e);
 				}
@@ -29,7 +22,7 @@ db.open(function(e, d){
 	}
 });
 
-var accounts = db.collection('accounts');
+var accounts = mongoosedb.collection('accounts');
 
 /* login validation methods */
 

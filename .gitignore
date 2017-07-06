@@ -7,7 +7,11 @@ project/node_modules/*
 project/app/server/modules/email-settings-mine.js
 
 # user images
-project/app/server/userImages/*
+project/app/server/userImages/*.png
+project/app/server/userImages/*.jpg
+project/app/server/userImages/*.jpeg
+project/app/server/userImages/*.tiff
+project/app/server/userImages/*.bmp
 
 # graph db
 project/graphdb
