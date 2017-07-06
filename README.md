@@ -1,4 +1,5 @@
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/akarsh/TUPJNOSQL17/master?grs=github&t=white)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
 # TUPJNOSQL17
 TU Berlin Project NOSQL Databases Summer Semester 2017   
@@ -29,7 +30,7 @@ Here is our presentation public url https://gitpitch.com/akarsh/TUPJNOSQL17
     - [PITCHME.md](PITCHME.md) is the presentation file.
     - [PITCHME.yaml](PITCHME.yaml) is the configuration file.
     - [PITCHME.css](PITCHME.css) is the theme setting file.
-
+    
 ### Project
 This folder containts our project files. More information on how-to for the project folder follow steps from the [project documentation](project/readme.md)
 
@@ -47,4 +48,15 @@ This folder containts our project files. More information on how-to for the proj
     - [Github guides](https://guides.github.com/)
     
 ### Credits
-The project folder contains fork of original repo https://github.com/braitsch/node-login by [Stephen Braitsch](https://github.com/braitsch)
+This project uses Open Source components. You can find the source code of their open source projects along with license information below. We acknowledge and are grateful to these developers for their contributions to open source.
+* Project: [node-login](https://github.com/braitsch/node-login)
+
+  Author: [Stephen Braitsch](https://github.com/braitsch)
+  
+  License: [MIT](https://github.com/braitsch/node-login/blob/master/license.md)
+  
+* Project: [moneo](https://github.com/srfrnk/moneo)
+
+  Author: [Shahar Frank](https://github.com/srfrnk)
+
+  License: [MIT](https://github.com/srfrnk/moneo/blob/master/LICENSE.txt)

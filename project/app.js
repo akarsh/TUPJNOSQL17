@@ -13,6 +13,7 @@ var errorHandler = require('errorhandler');
 var cookieParser = require('cookie-parser');
 var fileUpload = require('express-fileupload');
 var MongoStore = require('connect-mongo')(session);
+
 // Redis client creation
 var redis = require('redis');
 var client = redis.createClient();
@@ -23,6 +24,7 @@ client.on('ready',function() {
 client.on('error',function() {
  console.log("Error in Redis");
 });
+
 var app = express();
 
 app.locals.pretty = true;
@@ -57,6 +59,7 @@ app.use(session({
 	store: new MongoStore({ url: dbURL })
 	})
 );
+
 
 // redis connection
 client.on('connect', function() {
