@@ -20,6 +20,11 @@ The following databases must be started
 - Redis
 
 		$ redis-server
+		
+	For [redis-gui](https://github.com/joeferner/redis-commander)
+	
+		$ npm install -g redis-commander
+		$ redis-commander
 
 - MongoDB
 
