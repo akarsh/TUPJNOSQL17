@@ -13,25 +13,6 @@ var bodyParser = require('body-parser');
 var errorHandler = require('errorhandler');
 var cookieParser = require('cookie-parser');
 var fileUpload = require('express-fileupload');
-// Rethink db session store
-var RDBStore = require('session-rethinkdb')(session);
-// mongoose
-var mongoose = require('mongoose');
-// neo4j
-var neo4j    = require('neo4j');
-// moneo
-var moneo = require("moneo")({url:'http://localhost:7474'});
-
-// Redis client creation
-var redis = require('redis');
-var client = redis.createClient();
-client.on('ready',function() {
- console.log("Redis is ready");
-});
-
-client.on('error',function() {
- console.log("Error in Redis");
-});
 
 var app = express();
 
@@ -46,6 +27,36 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require('stylus').middleware({ src: __dirname + '/app/public' }));
 app.use(express.static(__dirname + '/app/public'));
 app.use(express.static(__dirname + '/app/server/userImages'));
+
+//Create connection to mongoose
+var mongoose 	= require('mongoose');
+var options = { server: { socketOptions: { keepAlive: 1 } } };
+global.mongoosedb = mongoose.connect('mongodb://localhost/blog-mongoose', options).connection;
+
+//Create moneo instance and export for schema plugin 
+var moneo = require("moneo")({url:'http://localhost:7474'});
+
+//Create connection to Redis
+var redis = require("redis");
+global.redisclient = redis.createClient();
+
+redisclient.on('ready',function() {
+ console.log("Redis is ready");
+});
+
+redisclient.on("error", function (err) {
+    console.log("Error " + err);
+});
+
+redisclient.on('connect', function() {
+    console.log('connected to redis');
+});
+
+//Create connection to neo4j
+global.neo4j = require('neo4j');
+
+//Create a rethinkDB session store
+global.RDBStore = require('session-rethinkdb')(session);
 
 // Rethink db session store
 var r = require('rethinkdbdash')({
@@ -68,12 +79,6 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
-
-
-// redis connection
-client.on('connect', function() {
-    console.log('connected to redis');
-});
 
 require('./app/server/routes')(app);
 

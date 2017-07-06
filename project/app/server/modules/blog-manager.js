@@ -1,10 +1,4 @@
-var redis = require("redis"),
-    client = redis.createClient();
-
-client.on("error", function (err) {
-    console.log("Error " + err);
-});
-
+require('../../../app');
 
 var blogTitleReply = [];
 var blogPostKey = [];
@@ -12,24 +6,24 @@ var blogTextareaReply = '';
 
 exports.addBlog = function(newData, callback)
 {
-	client.incr('id', function(err, id) {
+	redisclient.incr('id', function(err, id) {
 	var blogId = id;
-	client.sadd("blogPost", blogId);	
-    client.hmset(blogId, 'blogTitle', newData.blogTitle, 'blogTextarea', newData.blogTextarea,'category',newData.category,'userId', newData.userId);
+	redisclient.sadd("blogPost", blogId);	
+    redisclient.hmset(blogId, 'blogTitle', newData.blogTitle, 'blogTextarea', newData.blogTextarea,'category',newData.category,'userId', newData.userId);
 });
 }
 
 exports.getBlog = function(newData, callback)
 {
 
-	client.smembers("blogPost", function(err,results) {
+	redisclient.smembers("blogPost", function(err,results) {
 
     var blogPost = results;
   		
   	blogTitleReply= [];
     for (var i in blogPost) {
       blogPostKey.push(blogPost[i]);
-       client.hget(blogPost[i],"blogTitle", function(err,reply) {
+       redisclient.hget(blogPost[i],"blogTitle", function(err,reply) {
           blogTitleReply.push(reply.toString());
       });
     }
@@ -43,10 +37,9 @@ const mergeArrToJSON = (a, b) => a.map((item, i) => ({
 exports.getBlogData = function(newData, callback)
 {
 
- client.hget(newData,"blogTextarea", function(err,reply) {
+ redisclient.hget(newData,"blogTextarea", function(err,reply) {
       blogTextareaReply = reply.toString();
  });
 
  return {blogTextareaReply: blogTextareaReply}
 }
-
