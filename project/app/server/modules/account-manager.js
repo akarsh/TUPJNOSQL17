@@ -3,7 +3,6 @@ var IM = require('./image-manager');
 
 var crypto 		= require('crypto');
 var moment 		= require('moment');
-var UserModel 	= require('./../model/userModel')(moneo, mongoosedb);
 
 mongoosedbconn.open(function (e, d) {
 	if (e) {
@@ -58,7 +57,8 @@ exports.manualLogin = function (user, pass, callback) {
 
 exports.addNewAccount = function (req, callback) {
 
-	var imageSavePath = IM.saveImage(req);
+	//Don't save the image, but fetch the save path
+	var imageSavePath = IM.saveImage(req, false);
 	var newUserData = {
 		name: req.body['name'],
 		email: req.body['email'],
@@ -81,6 +81,8 @@ exports.addNewAccount = function (req, callback) {
 					saltAndHash(newUserData.pass, function (hash) {
 						newUserData.pass = hash;
 						newUserData.date = moment().format('MMMM Do YYYY, h:mm:ss a');
+						//Save the image only after all the validation has been done
+						IM.saveImage(req, true);
 						new UserModel(newUserData).save(function (err) {
 							callback(err);
 						});
