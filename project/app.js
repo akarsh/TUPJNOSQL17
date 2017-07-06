@@ -22,6 +22,17 @@ var neo4j    = require('neo4j');
 // moneo
 var moneo = require("moneo")({url:'http://localhost:7474'});
 
+// Redis client creation
+var redis = require('redis');
+var client = redis.createClient();
+client.on('ready',function() {
+ console.log("Redis is ready");
+});
+
+client.on('error',function() {
+ console.log("Error in Redis");
+});
+
 var app = express();
 
 app.locals.pretty = true;
@@ -57,6 +68,12 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
+
+// redis connection
+client.on('connect', function() {
+    console.log('connected to redis');
+});
 
 require('./app/server/routes')(app);
 
