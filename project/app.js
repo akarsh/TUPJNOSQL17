@@ -13,6 +13,9 @@ var bodyParser = require('body-parser');
 var errorHandler = require('errorhandler');
 var cookieParser = require('cookie-parser');
 var fileUpload = require('express-fileupload');
+//Remove after fixing session issue with rethinkDB - START
+var MongoStore = require('connect-mongo')(session);
+//Remove after fixing session issue with rethinkDB - END
 
 var app = express();
 
@@ -71,6 +74,7 @@ var store = new RDBStore(r,  {
     browserSessionsMaxAge: 5000, // optional, default is 60000 (60 seconds). Time between clearing expired sessions.
     table: 'session' // optional, default is 'session'. Table to store sessions in.
 });
+/*
 app.use(session({
     // https://github.com/expressjs/session#options
     secret: 'keyboard cat',
@@ -81,6 +85,18 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+*/
+
+//Remove after fixing session issue with rethinkDB - START
+app.use(session({
+	secret: 'faeb4453e5d14fe6f6d04637f78077c76c73d1b4',
+	proxy: true,
+	resave: true,
+	saveUninitialized: true,
+	store: new MongoStore({ url: 'mongodb://localhost:27017/blog-mongoose' })
+	})
+);
+//Remove after fixing session issue with rethinkDB - END
 
 require('./app/server/routes')(app);
 

@@ -29,7 +29,7 @@ var accounts = mongoosedbconn.collection('accounts');
 /* login validation methods */
 
 exports.autoLogin = function (user, pass, callback) {
-	accounts.findOne({ user: user }, function (e, o) {
+	UserModel.findOne({ user: user }, function (e, o) {
 		if (o) {
 			o.pass == pass ? callback(o) : callback(null);
 		} else {
@@ -39,7 +39,7 @@ exports.autoLogin = function (user, pass, callback) {
 }
 
 exports.manualLogin = function (user, pass, callback) {
-	accounts.findOne({ user: user }, function (e, o) {
+	UserModel.findOne({ user: user }, function (e, o) {
 		if (o == null) {
 			callback('user-not-found');
 		} else {
@@ -104,11 +104,14 @@ exports.updateAccount = function (req, callback) {
 		blogposts: []
 	};
 
-	accounts.findOne({ _id: getObjectId(newUserData.id) }, function (e, o) {
-		o.name = newUserData.name;
-		o.email = newUserData.email;
-		o.country = newUserData.country;
-		//o.image		= newUserData.image;
+	UserModel.findOne({ _id: getObjectId(newUserData.id) }, function (e, o) {
+		o.name		= newUserData.name;
+		o.email		= newUserData.email;
+		o.country	= newUserData.country;
+		console.log('newUserData.image = '+toString(newUserData.image));
+		if(newUserData.image != '' && newUserData.image != null){
+			o.image	= newUserData.image;
+		};
 		if (newUserData.pass == '') {
 			accounts.save(o, { safe: true }, function (e) {
 				if (e) callback(e);
