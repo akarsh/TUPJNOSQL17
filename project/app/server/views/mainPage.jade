@@ -1,4 +1,3 @@
-
 extends layout
 
 block content
@@ -21,11 +20,13 @@ block content
 	include main
 	include modals/alert
 	include modals/confirm
+	include modals/blog-post
 
 block scripts
 	script(src='/vendor/jquery-2.2.3.min.js')
 	script(src='/vendor/jquery.form.min.js')
 	script(src='/vendor/bootstrap.min.js')
 	script(src='/js/views/home.js')
+	script(src='/js/views/blogPost.js')
 	script(src='/js/controllers/homeController.js')
 	script(src='/js/form-validators/accountValidator.js')

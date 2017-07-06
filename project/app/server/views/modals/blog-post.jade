@@ -1,0 +1,18 @@
+.modal.fade#modalBlogPost(tabindex='-1', role='dialog')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal')
+                        span(aria-hidden='true')
+                        span.sr-only
+                            | Close
+                    h4#delPubLabel.modal-title
+                            | Delete
+                .modal-body
+                    input(type="text", name="blogId", id="blogId", value="")
+                    form#delPubForm.form(method='post', action='deletepublication')
+                .modal-footer
+                    button#modalDelPub.btn.btn-danger(type='submit', form='delPubForm')
+                            | Delete
+                    button.btn.btn-succes(type='button', data-dismiss='modal')
+                            | Close
