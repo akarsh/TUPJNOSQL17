@@ -5,33 +5,37 @@ var IM = require('./modules/image-manager');
 var BM = require('./modules/blog-manager');
 var CL = require('./modules/category-list');
 
-module.exports = function(app) {
+var express = require('express');
 
-// main login page //
-	app.get('/', function(req, res){
-	// check if the user's credentials are saved in a cookie //
-		if (req.cookies.user == undefined || req.cookies.pass == undefined){
+module.exports = function (app) {
+
+	var router = express.Router();
+
+	// main login page //
+	app.get('/', function (req, res) {
+		// check if the user's credentials are saved in a cookie //
+		if (req.cookies.user == undefined || req.cookies.pass == undefined) {
 			res.render('login', { title: 'Hello - Please Login To Your Account' });
-		}	else{
-	// attempt automatic login //
-			AM.autoLogin(req.cookies.user, req.cookies.pass, function(o){
-				if (o != null){
-				    req.session.user = o;
+		} else {
+			// attempt automatic login //
+			AM.autoLogin(req.cookies.user, req.cookies.pass, function (o) {
+				if (o != null) {
+					req.session.user = o;
 					res.redirect('/user');
-				}	else{
+				} else {
 					res.render('login', { title: 'Hello - Please Login To Your Account' });
 				}
 			});
 		}
 	});
 
-	app.post('/', function(req, res){
-		AM.manualLogin(req.body['user'], req.body['pass'], function(e, o){
-			if (!o){
+	app.post('/', function (req, res) {
+		AM.manualLogin(req.body['user'], req.body['pass'], function (e, o) {
+			if (!o) {
 				res.status(400).send(e);
-			}	else{
+			} else {
 				req.session.user = o;
-				if (req.body['remember-me'] == 'true'){
+				if (req.body['remember-me'] == 'true') {
 					res.cookie('user', o.user, { maxAge: 900000 });
 					res.cookie('pass', o.pass, { maxAge: 900000 });
 				}
@@ -40,42 +44,33 @@ module.exports = function(app) {
 		});
 	});
 
-// logged-in user homepage //
+	// logged-in user homepage //
 
-	app.get('/home', function(req, res) {
-		if (req.session.user == null){
-	// if user is not logged-in redirect back to login page //
+	app.get('/home', function (req, res) {
+		if (req.session.user == null) {
+			// if user is not logged-in redirect back to login page //
 			res.redirect('/');
-		}	else{
+		} else {
 			res.render('home', {
-				title : 'Control Panel',
-				countries : CT,
-				udata : req.session.user
+				title		: 'Control Panel',
+				countries	: CT,
+				udata		: req.session.user
 			});
 		}
 	});
 
-	app.post('/home', function(req, res){
-		if (req.session.user == null){
+	app.post('/home', function (req, res) {
+		if (req.session.user == null) {
 			res.redirect('/');
-		}	else{
+		} else {
 			var imageSavePath = IM.saveImage(req, res);
-			AM.updateAccount({
-				id		: req.session.user._id,
-				name	: req.body['name'],
-				email	: req.body['email'],
-				pass	: req.body['pass'],
-				country	: req.body['country'],
-				image	: imageSavePath,
-				tags	: [],
-				blogposts	: []
-			}, function(e, o){
-				if (e){
+			AM.updateAccount(req, function (e, o) {
+				if (e) {
 					res.status(400).send('error-updating-account');
-				}	else{
+				} else {
 					req.session.user = o;
-			// update the user's login cookies if they exists //
-					if (req.cookies.user != undefined && req.cookies.pass != undefined){
+					// update the user's login cookies if they exists //
+					if (req.cookies.user != undefined && req.cookies.pass != undefined) {
 						res.cookie('user', o.user, { maxAge: 900000 });
 						res.cookie('pass', o.pass, { maxAge: 900000 });
 					}
@@ -85,191 +80,183 @@ module.exports = function(app) {
 		}
 	});
 
-	app.get('/user', function(req, res) {
-		if (req.session.user == null){
-	// if user is not logged-in redirect back to login page //
+	app.get('/user', function (req, res) {
+		if (req.session.user == null) {
+			// if user is not logged-in redirect back to login page //
 			res.redirect('/');
-		}	else{
+		} else {
 			res.render('user', {
-				title : 'Control Panel',
-				udata : req.session.user,
-				imagePath : host + ':' + appPort + '/' +req.session.user.image
+				title		: 'Control Panel',
+				udata		: req.session.user,
+				imagePath	: host + ':' + appPort + '/' + req.session.user.image
 			});
 		}
 	});
 
-	app.get('/mainPage', function(req, res) {
-		if (req.session.user == null){
+	app.get('/mainPage', function (req, res) {
+		if (req.session.user == null) {
 			res.redirect('/');
-		}	else{
-			var {blogTitleReply, blogId} = BM.getBlog();
+		} else {
+			var { blogTitleReply, blogId } = BM.getBlog();
 			res.render('mainPage', {
-				title : 'main',
-				blogData : blogTitleReply,
-				blogs: blogId,
-				udata : req.session.user
+				title		: 'main',
+				blogData	: blogTitleReply,
+				blogs		: blogId,
+				udata		: req.session.user
 			});
 		}
 	});
 
-	app.get('/mainPage/:blogId', function(req, res) {
-		if (req.session.user == null){
+	app.get('/mainPage/:blogId', function (req, res) {
+		if (req.session.user == null) {
 			res.redirect('/');
-			}	else{
-				var blogId = req.params.blogId;
-				var {blogTextareaReply} = BM.getBlogData(blogId);
-				res.render('blogPage', {
-					title : 'main',
-					blogTextArea : blogTextareaReply,
-					udata : req.session.user
+		} else {
+			var blogId = req.params.blogId;
+			var { blogTextareaReply } = BM.getBlogData(blogId);
+			res.render('blogPage', {
+				title			: 'main',
+				blogTextArea	: blogTextareaReply,
+				udata			: req.session.user
 			});
 		}
 	});
 
-	app.get('/blogPost', function(req, res) {
-		if (req.session.user == null){
+	app.get('/blogPost', function (req, res) {
+		if (req.session.user == null) {
 			res.redirect('/');
-		}	else{
+		} else {
 			res.render('blogPost', {
-				title : 'Blog Data',
-				categories : CL,
-				udata : req.session.user
+				title		: 'Blog Data',
+				categories	: CL,
+				udata		: req.session.user
 			});
 		}
 	});
 
-	app.post('/blogPost', function(req, res){
+	app.post('/blogPost', function (req, res) {
 		BM.addBlog({
-			userId: req.session.user._id,
-			blogTitle : req.body['blogTitle'],
-			category :req.body['category'],
-			blogTextarea : req.body['blogTextarea']
+			userId			: req.session.user._id,
+			blogTitle		: req.body['blogTitle'],
+			category		: req.body['category'],
+			blogTextarea	: req.body['blogTextarea']
 		});
 	});
 
 
-	app.get('/accountSettings', function(req, res) {
-		if (req.session.user == null){
-	// if user is not logged-in redirect back to login page //
+	app.get('/accountSettings', function (req, res) {
+		if (req.session.user == null) {
+			// if user is not logged-in redirect back to login page //
 			res.redirect('/');
-		}	else{
+		} else {
 			res.render('accountSettings', {
-				title : 'Account Settings',
-				countries : CT,
-				udata : req.session.user
+				title		: 'Account Settings',
+				countries	: CT,
+				udata		: req.session.user
 			});
 		}
 	});
 
-	app.post('/logout', function(req, res){
+	app.post('/logout', function (req, res) {
 		res.clearCookie('user');
 		res.clearCookie('pass');
-		req.session.destroy(function(e){ res.status(200).send('ok'); });
+		req.session.destroy(function (e) { res.status(200).send('ok'); });
 	})
 
-// creating new accounts //
+	// creating new accounts //
 
-	app.get('/signup', function(req, res) {
-		res.render('signup', {  title: 'Signup', countries : CT });
+	app.get('/signup', function (req, res) {
+		res.render('signup', { title: 'Signup', countries: CT });
 	});
 
-	app.post('/signup', function(req, res){
-		var imageSavePath = IM.saveImage(req, res);
-		AM.addNewAccount({
-			name 	: req.body['name'],
-			email 	: req.body['email'],
-			user 	: req.body['user'],
-			pass	: req.body['pass'],
-			country : req.body['country'],
-			image	: imageSavePath,
-			tags	: [],
-			blogposts	: []
-		}, function(e){
-			if (e){
+	app.post('/signup', function (req, res) {
+		AM.addNewAccount(req, function (e) {
+			if (e) {
 				res.status(400).send(e);
-			}	else{
+			} else {
 				res.status(200).send('ok');
 			}
 		});
 	});
 
-// password reset //
+	// password reset //
 
-	app.post('/lost-password', function(req, res){
-	// look up the user's account via their email //
-		AM.getAccountByEmail(req.body['email'], function(o){
-			if (o){
-				EM.dispatchResetPasswordLink(o, function(e, m){
-				// this callback takes a moment to return //
-				// TODO add an ajax loader to give user feedback //
-					if (!e){
+	app.post('/lost-password', function (req, res) {
+		// look up the user's account via their email //
+		AM.getAccountByEmail(req.body['email'], function (o) {
+			if (o) {
+				EM.dispatchResetPasswordLink(o, function (e, m) {
+					// this callback takes a moment to return //
+					// TODO add an ajax loader to give user feedback //
+					if (!e) {
 						res.status(200).send('ok');
-					}	else{
+					} else {
 						for (k in e) console.log('ERROR : ', k, e[k]);
 						res.status(400).send('unable to dispatch password reset');
 					}
 				});
-			}	else{
+			} else {
 				res.status(400).send('email-not-found');
 			}
 		});
 	});
 
-	app.get('/reset-password', function(req, res) {
+	app.get('/reset-password', function (req, res) {
 		var email = req.query["e"];
 		var passH = req.query["p"];
-		AM.validateResetLink(email, passH, function(e){
-			if (e != 'ok'){
+		AM.validateResetLink(email, passH, function (e) {
+			if (e != 'ok') {
 				res.redirect('/');
-			} else{
-	// save the user's email in a session instead of sending to the client //
-				req.session.reset = { email:email, passHash:passH };
-				res.render('reset', { title : 'Reset Password' });
+			} else {
+				// save the user's email in a session instead of sending to the client //
+				req.session.reset = { email: email, passHash: passH };
+				res.render('reset', { title: 'Reset Password' });
 			}
 		})
 	});
 
-	app.post('/reset-password', function(req, res) {
+	app.post('/reset-password', function (req, res) {
 		var nPass = req.body['pass'];
-	// retrieve the user's email from the session to lookup their account and reset password //
+		// retrieve the user's email from the session to lookup their account and reset password //
 		var email = req.session.reset.email;
-	// destory the session immediately after retrieving the stored email //
+		// destory the session immediately after retrieving the stored email //
 		req.session.destroy();
-		AM.updatePassword(email, nPass, function(e, o){
-			if (o){
+		AM.updatePassword(email, nPass, function (e, o) {
+			if (o) {
 				res.status(200).send('ok');
-			}	else{
+			} else {
 				res.status(400).send('unable to update password');
 			}
 		})
 	});
 
-// view & delete accounts //
+	// view & delete accounts //
 
-	app.get('/print', function(req, res) {
-		AM.getAllRecords( function(e, accounts){
-			res.render('print', { title : 'Account List', accts : accounts });
+	app.get('/print', function (req, res) {
+		AM.getAllRecords(function (e, accounts) {
+			res.render('print', { title: 'Account List', accts: accounts });
 		})
 	});
 
-	app.post('/delete', function(req, res){
-		AM.deleteAccount(req.body.id, function(e, obj){
-			if (!e){
+	app.post('/delete', function (req, res) {
+		AM.deleteAccount(req.body.id, function (e, obj) {
+			if (!e) {
 				res.clearCookie('user');
 				res.clearCookie('pass');
-				req.session.destroy(function(e){ res.status(200).send('ok'); });
-			}	else{
+				req.session.destroy(function (e) { res.status(200).send('ok'); });
+			} else {
 				res.status(400).send('record not found');
 			}
-	    });
+		});
 	});
 
-	app.get('/reset', function(req, res) {
-		AM.delAllRecords(function(){
+	app.get('/reset', function (req, res) {
+		AM.delAllRecords(function () {
 			res.redirect('/print');
 		});
 	});
 
-	app.get('*', function(req, res) { res.render('404', { title: 'Page Not Found'}); });
+	app.get('*', function (req, res) { res.render('404', { title: 'Page Not Found' }); });
+
+	return router;
 
 };

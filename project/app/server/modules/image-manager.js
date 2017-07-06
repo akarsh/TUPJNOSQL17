@@ -1,6 +1,6 @@
 require('../../../globalconfig');
 
-exports.saveImage = function(req, res){
+exports.saveImage = function(req){
     var imageFileName = '';
     if(req.files !== undefined){
         var imageFile = req.files.image;
