@@ -29,12 +29,14 @@ app.use(express.static(__dirname + '/app/public'));
 app.use(express.static(__dirname + '/app/server/userImages'));
 
 //Create connection to mongoose
-var mongoose 	= require('mongoose');
+var mongoose = require('mongoose');
 var options = { server: { socketOptions: { keepAlive: 1 } } };
-global.mongoosedb = mongoose.connect('mongodb://localhost/blog-mongoose', options).connection;
+global.mongoosedb = mongoose.connect('mongodb://localhost/blog-mongoose', options);
+global.mongoosedbconn = mongoosedb.connection;
 
 //Create moneo instance and export for schema plugin 
-var moneo = require("moneo")({url:'http://localhost:7474'});
+//global.moneo = require("moneo")({url:'http://localhost:7474'});
+global.moneo = require("moneo");
 
 //Create connection to Redis
 var redis = require("redis");
@@ -49,7 +51,7 @@ redisclient.on("error", function (err) {
 });
 
 redisclient.on('connect', function() {
-    console.log('connected to redis');
+    console.log('Connected to redis');
 });
 
 //Create connection to neo4j
@@ -58,7 +60,7 @@ global.neo4j = require('neo4j');
 //Create a rethinkDB session store
 global.RDBStore = require('session-rethinkdb')(session);
 
-// Rethink db session store
+// rethinkDB session store
 var r = require('rethinkdbdash')({
     servers: [
         {host: 'localhost',
@@ -85,3 +87,5 @@ require('./app/server/routes')(app);
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
 });
+
+module.exports = app;
