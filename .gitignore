@@ -1,7 +1,7 @@
 .DS_Store
 
 # node modules
-project/node_modules
+project/node_modules/*
 
 #email settings
 project/app/server/modules/email-settings-mine.js
@@ -14,3 +14,6 @@ project/graphdb
 
 # redis db
 project/dump.rdb
+
+# rethinkdb
+project/rethinkdb_data/*

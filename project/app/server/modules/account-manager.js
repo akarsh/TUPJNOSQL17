@@ -1,18 +1,15 @@
 
 var crypto 		= require('crypto');
-var MongoDB 	= require('mongodb').Db;
-var Server 		= require('mongodb').Server;
+// mongoose db
+var mongoose 	= require('mongoose');
 var moment 		= require('moment');
 
-/*
-	ESTABLISH DATABASE CONNECTION
-*/
+var moneo = require("moneo")({url:'http://localhost:7474'});
 
-var dbName = process.env.DB_NAME || 'blog-authors';
-var dbHost = process.env.DB_HOST || 'localhost'
-var dbPort = process.env.DB_PORT || 27017;
+// connect to mongoose database
+var options = { server: { socketOptions: { keepAlive: 1 } } };
+var db = mongoose.connect('mongodb://localhost/blog-mongoose', options).connection;
 
-var db = new MongoDB(dbName, new Server(dbHost, dbPort, {auto_reconnect: true}), {w: 1});
 db.open(function(e, d){
 	if (e) {
 		console.log(e);
