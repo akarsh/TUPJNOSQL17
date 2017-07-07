@@ -107,20 +107,6 @@ module.exports = function (app) {
 		}
 	});
 
-	app.get('/mainPage/:blogId', function (req, res) {
-		if (req.session.user == null) {
-			res.redirect('/');
-		} else {
-			var blogId = req.params.blogId;
-			var { blogTextareaReply } = BM.getBlogData(blogId);
-			res.render('blogPage', {
-				title: 'main',
-				blogTextArea: blogTextareaReply,
-				udata: req.session.user
-			});
-		}
-	});
-
 	app.get('/blogPost', function (req, res) {
 		if (req.session.user == null) {
 			res.redirect('/');
@@ -137,6 +123,19 @@ module.exports = function (app) {
 		BM.addBlog(req);
 	});
 
+	app.get('/blogPost/:blogId', function (req, res) {
+		if (req.session.user == null) {
+			res.redirect('/');
+		} else {
+			var blogId = req.params.blogId;
+			var { blogTextareaReply } = BM.getBlogData(blogId);
+			res.render('blogPage', {
+				title: 'main',
+				blogTextArea: blogTextareaReply,
+				udata: req.session.user
+			});
+		}
+	});
 
 	app.get('/accountSettings', function (req, res) {
 		if (req.session.user == null) {

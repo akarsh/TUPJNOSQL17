@@ -21,7 +21,7 @@ input(type='hidden', value= user._id)#userId
 						each blogpost in user.blogposts
 							tr
 								td 
-									a #[a(href=`/user/${blogpost._id}`) #{blogpost.name}]
+									a #[a(href=`/blogPost/${blogpost._id}`) #{blogpost.name}]
 					td
 						tr
 							td
