@@ -1,7 +1,11 @@
 .DS_Store
 
-# node modules
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
 project/node_modules/*
+project/node_modules
+
 
 #email settings
 project/app/server/modules/email-settings-mine.js

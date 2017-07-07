@@ -49,9 +49,9 @@ module.exports = function (moneo, mongoosedb) {
         blogposts: {
             //setting the nodeProperty to true; as this schema property needs to be exported to neo4j graph db
             type: [{
-                _id: { type: Number},
-                name: { type: String},
-                category: { type: String}
+                _id: { type: Number, nodeProperty: true},
+                name: { type: String, nodeProperty: true},
+                category: { type: String, nodeProperty: true}
             }],
             nodeProperty: true,
             default: ''
