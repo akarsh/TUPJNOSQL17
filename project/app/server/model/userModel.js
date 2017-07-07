@@ -7,7 +7,7 @@ module.exports = function (moneo, mongoosedb) {
         name: {
             type: String,
             //setting the nodeProperty to false; as this schema property isn't required in neo4j graph db
-            nodeProperty: false,
+            nodeProperty: true,
             default: ''
         },
         email: {
@@ -49,9 +49,9 @@ module.exports = function (moneo, mongoosedb) {
         blogposts: {
             //setting the nodeProperty to true; as this schema property needs to be exported to neo4j graph db
             type: [{
-                _id: { type: Number, nodeProperty: true },
-                name: { type: String, nodeProperty: true },
-                category: { type: String, nodeProperty: true }
+                _id: { type: Number},
+                name: { type: String},
+                category: { type: String}
             }],
             nodeProperty: true,
             default: ''
