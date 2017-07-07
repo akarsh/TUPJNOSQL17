@@ -52,9 +52,9 @@ module.exports = function (app) {
 			res.redirect('/');
 		} else {
 			res.render('home', {
-				title		: 'Control Panel',
-				countries	: CT,
-				udata		: req.session.user
+				title: 'Control Panel',
+				countries: CT,
+				udata: req.session.user
 			});
 		}
 	});
@@ -86,9 +86,9 @@ module.exports = function (app) {
 			res.redirect('/');
 		} else {
 			res.render('user', {
-				title		: 'Control Panel',
-				udata		: req.session.user,
-				imagePath	: host + ':' + appPort + '/' + req.session.user.image
+				title: 'Control Panel',
+				udata: req.session.user,
+				imagePath: host + ':' + appPort + '/' + req.session.user.image
 			});
 		}
 	});
@@ -99,10 +99,10 @@ module.exports = function (app) {
 		} else {
 			var { blogTitleReply, blogId } = BM.getBlog();
 			res.render('mainPage', {
-				title		: 'main',
-				blogData	: blogTitleReply,
-				blogs		: blogId,
-				udata		: req.session.user
+				title: 'main',
+				blogData: blogTitleReply,
+				blogs: blogId,
+				udata: req.session.user
 			});
 		}
 	});
@@ -114,9 +114,9 @@ module.exports = function (app) {
 			var blogId = req.params.blogId;
 			var { blogTextareaReply } = BM.getBlogData(blogId);
 			res.render('blogPage', {
-				title			: 'main',
-				blogTextArea	: blogTextareaReply,
-				udata			: req.session.user
+				title: 'main',
+				blogTextArea: blogTextareaReply,
+				udata: req.session.user
 			});
 		}
 	});
@@ -126,20 +126,15 @@ module.exports = function (app) {
 			res.redirect('/');
 		} else {
 			res.render('blogPost', {
-				title		: 'Blog Data',
-				categories	: CL,
-				udata		: req.session.user
+				title: 'Blog Data',
+				categories: CL,
+				udata: req.session.user
 			});
 		}
 	});
 
 	app.post('/blogPost', function (req, res) {
-		BM.addBlog({
-			userId			: req.session.user._id,
-			blogTitle		: req.body['blogTitle'],
-			category		: req.body['category'],
-			blogTextarea	: req.body['blogTextarea']
-		});
+		BM.addBlog(req);
 	});
 
 
@@ -149,9 +144,9 @@ module.exports = function (app) {
 			res.redirect('/');
 		} else {
 			res.render('accountSettings', {
-				title		: 'Account Settings',
-				countries	: CT,
-				udata		: req.session.user
+				title: 'Account Settings',
+				countries: CT,
+				udata: req.session.user
 			});
 		}
 	});

@@ -41,6 +41,8 @@ global.mongoosedbconn = mongoosedb.connection;
 //global.moneo = require("moneo")({url:'http://localhost:7474'});
 global.moneo = require("moneo");
 
+global.UserModel 	= require('./app/server/model/userModel')(moneo, mongoosedb);
+
 //Create connection to Redis
 var redis = require("redis");
 global.redisclient = redis.createClient();

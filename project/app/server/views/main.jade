@@ -6,15 +6,19 @@ input(type='hidden', value= user._id)#userId
 
 #main
 h1 Welcome to Blog application
-a(href="/blogPost") Click here to create your own Blog Page
+h4 
+	a(href="/blogPost") Click here to create your new blog post
 
 #user-details
-
-		table
-			tbody
-				tr
-					td
-						tr
-							td	Blog Title: &nbsp;
-								each blogTitle, index in blogData
-									a #[a(href=`/mainPage/${blogs[index]}`) #{blogTitle}] &nbsp;	
+	table
+		tbody
+			tr
+				td
+					tr
+						td
+							h3 
+								b Latest blog posts:
+						each blogTitle, index in blogData
+							tr
+								td
+									a #[a(href=`/mainPage/${blogs[index]}`) #{blogTitle}]
