@@ -115,14 +115,14 @@ exports.updateAccount = function (req, callback) {
 			o.image	= newUserData.image;
 		};
 		if (newUserData.pass == '') {
-			accounts.save(o, { safe: true }, function (e) {
+			UserModel.save(o, { safe: true }, function (e) {
 				if (e) callback(e);
 				else callback(null, o);
 			});
 		} else {
 			saltAndHash(newUserData.pass, function (hash) {
 				o.pass = hash;
-				accounts.save(o, { safe: true }, function (e) {
+				UserModel.save(o, { safe: true }, function (e) {
 					if (e) callback(e);
 					else callback(null, o);
 				});
@@ -132,13 +132,13 @@ exports.updateAccount = function (req, callback) {
 }
 
 exports.updatePassword = function (email, newPass, callback) {
-	accounts.findOne({ email: email }, function (e, o) {
+	UserModel.findOne({ email: email }, function (e, o) {
 		if (e) {
 			callback(e, null);
 		} else {
 			saltAndHash(newPass, function (hash) {
 				o.pass = hash;
-				accounts.save(o, { safe: true }, callback);
+				UserModel.save(o, { safe: true }, callback);
 			});
 		}
 	});
@@ -151,17 +151,17 @@ exports.deleteAccount = function (id, callback) {
 }
 
 exports.getAccountByEmail = function (email, callback) {
-	accounts.findOne({ email: email }, function (e, o) { callback(o); });
+	UserModel.findOne({ email: email }, function (e, o) { callback(o); });
 }
 
 exports.validateResetLink = function (email, passHash, callback) {
-	accounts.find({ $and: [{ email: email, pass: passHash }] }, function (e, o) {
+	UserModel.find({ $and: [{ email: email, pass: passHash }] }, function (e, o) {
 		callback(o ? 'ok' : null);
 	});
 }
 
 exports.getAllRecords = function (callback) {
-	accounts.find().toArray(
+	UserModel.find().toArray(
 		function (e, res) {
 			if (e) callback(e)
 			else callback(null, res)
@@ -169,7 +169,7 @@ exports.getAllRecords = function (callback) {
 }
 
 exports.delAllRecords = function (callback) {
-	accounts.remove({}, callback); // reset accounts collection for testing //
+	UserModel.remove({}, callback); // reset accounts collection for testing //
 }
 
 /* private encryption & validation methods */
@@ -200,7 +200,7 @@ var validatePassword = function (plainPass, hashedPass, callback) {
 }
 
 var getObjectId = function (id) {
-	return new require('mongodb').ObjectID(id);
+	return new require('mongoose').ObjectID(id);
 }
 
 var findById = function (id, callback) {
@@ -213,7 +213,7 @@ var findById = function (id, callback) {
 
 var findByMultipleFields = function (a, callback) {
 	// this takes an array of name/val pairs to search against {fieldName : 'value'} //
-	accounts.find({ $or: a }).toArray(
+	UserModel.find({ $or: a }).toArray(
 		function (e, results) {
 			if (e) callback(e)
 			else callback(null, results)
