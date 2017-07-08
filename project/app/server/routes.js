@@ -63,9 +63,9 @@ module.exports = function (app) {
 		if (req.session.user == null) {
 			res.redirect('/');
 		} else {
-			var imageSavePath = IM.saveImage(req, res);
 			AM.updateAccount(req, function (e, o) {
 				if (e) {
+					console.log(e.message);
 					res.status(400).send('error-updating-account');
 				} else {
 					req.session.user = o;
@@ -74,7 +74,11 @@ module.exports = function (app) {
 						res.cookie('user', o.user, { maxAge: 900000 });
 						res.cookie('pass', o.pass, { maxAge: 900000 });
 					}
-					res.status(200).send('ok');
+					res.status(200).render('home', {
+						title: 'Control Panel',
+						countries: CT,
+						udata: req.session.user
+					});
 				}
 			});
 		}
