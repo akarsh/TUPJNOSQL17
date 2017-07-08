@@ -17,16 +17,15 @@ exports.addBlog = function (req, callback) {
         var blogId = id;
         redisclient.sadd("blogPost", blogId);
         redisclient.hmset(blogId, 'blogTitle', newData.blogTitle, 'blogTextarea', newData.blogTextarea, 'category', newData.category, 'userId', newData.userId);
-        UserModel.update(
-            { _id: newData.userId },
+        BlogpostModel.update(
             {
-                $addToSet: {
-                    tags: newData.category,
-                    blogposts: {
-                        _id: parseInt(blogId),
-                        name: newData.blogTitle,
-                        category: newData.category
-                    }
+                _id: blogId
+            }, {
+                $set: {
+                    _id: blogId,
+                    name: newData.blogTitle,
+                    category: newData.category,
+                    author: newData.userId
                 }
             },
             { upsert: true },
@@ -34,12 +33,31 @@ exports.addBlog = function (req, callback) {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log(res);
+                    UserModel.update(
+                        { _id: newData.userId },
+                        {
+                            $addToSet: {
+                                tags: newData.category,
+                                blogposts: {
+                                    _id: parseInt(blogId),
+                                    name: newData.blogTitle,
+                                    category: newData.category
+                                }
+                            }
+                        },
+                        { upsert: true },
+                        function (err, res) {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                console.log(res);
+                            }
+                        }
+                    )
                 }
             }
         );
     });
-
 }
 
 exports.getBlog = function (newData, callback) {
