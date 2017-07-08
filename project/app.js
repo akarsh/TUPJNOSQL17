@@ -15,7 +15,11 @@ var cookieParser = require('cookie-parser');
 var fileUpload = require('express-fileupload');
 //Create connection to mongoose
 var mongoose = require('mongoose');
+// Server level options refer to
+// http://mongodb.github.io/node-mongodb-native/driver-articles/mongoclient.html#server-a-hash-of-options-at-the-server-level-not-supported-by-the-url
 var options = { server: { socketOptions: { keepAlive: 1 } } };
+// Mongodb driver options refer to
+// http://mongodb.github.io/node-mongodb-native/driver-articles/mongoclient.html#mongoclient-connect-options
 global.mongoosedb = mongoose.connect('mongodb://localhost/blog-mongoose', options);
 global.mongoosedbconn = mongoosedb.connection;
 //Create moneo instance and export for schema plugin
