@@ -4,7 +4,7 @@ module.exports = function (moneo, mongoosedb) {
 
     // user schema
     var BlogpostSchema = new Schema({
-        _id: {
+        id: {
             type: Number,
             //setting the nodeProperty to true; as this schema property needs to be exported to neo4j graph db
             nodeProperty: true
