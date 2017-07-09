@@ -35,7 +35,7 @@ module.exports = function (moneo, mongoosedb) {
 
     // running a cypherQuery for the data model this query will fetch all the nodes and return all the nodes.
     blogpostmodel.cypherQuery({ query: 'match (n:Blogpost) return n limit 1' }, function (err, res) {
-        console.log("Result of user model " + res);
+        console.log("Result of blogpost model " + res);
     });
 
     // data model is returned
