@@ -29,7 +29,7 @@ exports.addBlog = function (req, callback) {
                         {
                             $addToSet: {
                                 tags: newData.category,
-                                blogposts: res._id
+                                blogposts: res.id
                             }
                         },
                         { upsert: true },
