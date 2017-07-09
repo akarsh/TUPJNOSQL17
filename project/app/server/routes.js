@@ -4,6 +4,7 @@ var EM = require('./modules/email-dispatcher');
 var IM = require('./modules/image-manager');
 var BM = require('./modules/blog-manager');
 var CL = require('./modules/category-list');
+var RS = require('./modules/recommendation-manager');
 
 var express = require('express');
 
@@ -102,10 +103,13 @@ module.exports = function (app) {
 			res.redirect('/');
 		} else {
 			var { blogTitleReply, blogId } = BM.getBlog();
+			var { resultCategory, resultTitle } = RS.getRecommendation();
 			res.render('mainPage', {
 				title: 'main',
 				blogData: blogTitleReply,
 				blogs: blogId,
+				recommendCategory: resultCategory,
+				recommendTitle: resultTitle,
 				udata: req.session.user
 			});
 		}

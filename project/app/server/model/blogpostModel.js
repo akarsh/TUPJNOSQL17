@@ -34,9 +34,16 @@ module.exports = function (moneo, mongoosedb) {
     var blogpostmodel = mongoosedb.model('Blogpost', BlogpostSchema);
 
     // running a cypherQuery for the data model this query will fetch all the nodes and return all the nodes.
-    blogpostmodel.cypherQuery({ query: 'match (n:Blogpost) return n limit 1' }, function (err, res) {
-        console.log("Result of blogpost model " + res);
-    });
+    // blogpostmodel.cypherQuery({ query: 'match (n:Blogpost) return n limit 1' }, function (err, res) {
+    //     console.log("Result of blogpost model " + res);
+    // });
+
+    // blogpostmodel.cypherQuery({ query: 'MATCH (n:Blogpost) WHERE n.category="Fiction" RETURN n' }, function (err, res) {
+    //     var result = res.map(function(item){ return item.n.properties.category }).toString();
+    //     console.log("categories: " + JSON.stringify(result, null, 4));
+    //     // var result2 = result.toString();
+    //     console.log(result);
+    // });
 
     // data model is returned
     return blogpostmodel;
