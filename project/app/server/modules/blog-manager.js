@@ -7,39 +7,42 @@ var blogTextareaReply = '';
 exports.addBlog = function (req, callback) {
 
     var newData = {
-        userId: req.session.user._id,
-        blogTitle: req.body['blogTitle'],
+        id: 0,
+        name: req.body['blogTitle'],
         category: req.body['category'],
-        blogTextarea: req.body['blogTextarea']
+        author: req.session.user._id
     };
 
     redisclient.incr('id', function (err, id) {
         var blogId = id;
+        newData.id = blogId;
         redisclient.sadd("blogPost", blogId);
-        redisclient.hmset(blogId, 'blogTitle', newData.blogTitle, 'blogTextarea', newData.blogTextarea, 'category', newData.category, 'userId', newData.userId);
-        UserModel.update(
-            { _id: newData.userId },
-            {
-                $addToSet: {
-                    tags: newData.category,
-                    blogposts: {
-                        _id: parseInt(blogId),
-                        name: newData.blogTitle,
-                        category: newData.category
-                    }
-                }
-            },
-            { upsert: true },
+        redisclient.hmset(blogId, 'blogTitle', newData.name, 'blogTextarea', req.body['blogTextarea'], 'category', newData.category, 'userId', newData.author);
+        //Post updates in Mongo & implicitly push to neo4j 
+        new BlogpostModel(newData).save(
             function (err, res) {
                 if (err) {
-                    console.log(err);
+                    console.error(err);
                 } else {
-                    console.log(res);
+                    UserModel.update(
+                        { _id: newData.author },
+                        {
+                            $addToSet: {
+                                tags: newData.category,
+                                blogposts: res._id
+                            }
+                        },
+                        { upsert: true },
+                        function (err, res) {
+                            if (err) {
+                                console.error(err);
+                            }
+                        }
+                    )
                 }
             }
         );
     });
-
 }
 
 exports.getBlog = function (newData, callback) {

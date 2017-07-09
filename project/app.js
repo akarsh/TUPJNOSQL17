@@ -44,8 +44,9 @@ global.neo4j = require('neo4j');
 // Create a mongo session store
 var MongoStore = require('connect-mongo')(session);
 
-// connection settings passed to user model
+//Create global user/blogpost models and pass DB connections
 global.UserModel = require('./app/server/model/userModel')(moneo, mongoosedb);
+global.BlogpostModel = require('./app/server/model/blogpostModel')(moneo, mongoosedb);
 
 var app = express();
 

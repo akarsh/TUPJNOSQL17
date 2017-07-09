@@ -6,7 +6,7 @@ var moment = require('moment');
 
 mongoosedbconn.open(function (e, d) {
     if (e) {
-        console.log(e);
+        console.error(e);
     } else {
         if (process.env.NODE_ENV == 'live') {
             mongoosedbconn.authenticate(process.env.DB_USER, process.env.DB_PASS, function (e, res) {
