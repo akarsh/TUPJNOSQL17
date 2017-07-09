@@ -48,9 +48,9 @@ module.exports = function (moneo, mongoosedb) {
         },
         blogposts: {
             //setting the nodeProperty to true; as this schema property needs to be exported to neo4j graph db
-            type: [mongoosedb.Schema.Types.ObjectId],
-            ref: 'Blogpost',
-            nodeProperty: true
+            type: [Number],
+            nodeProperty: true,
+            default: 0
         }
     });
 
