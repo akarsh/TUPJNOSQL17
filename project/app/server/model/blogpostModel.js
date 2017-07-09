@@ -9,7 +9,7 @@ module.exports = function (moneo, mongoosedb) {
             //setting the nodeProperty to true; as this schema property needs to be exported to neo4j graph db
             nodeProperty: true
         },
-        name: {
+        title: {
             type: String,
             //setting the nodeProperty to true; as this schema property needs to be exported to neo4j graph db
             nodeProperty: true

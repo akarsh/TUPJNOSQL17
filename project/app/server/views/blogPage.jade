@@ -1,17 +1,29 @@
 
-// preset form values if we receive a userdata object //
-- user = typeof(udata) != 'undefined' ? udata : { }
-// store the userId on the client side in a hidden input field //
-input(type='hidden', value= user._id)#userId
+extends layout
 
-#main
+block content
 
-#user-details
+	nav.navbar.navbar-default.navbar-fixed-top
+		.container
+			.navbar-header
+				.navbar-brand Account Settings
+				.navbar-btn#btn-user.btn.btn-default
+					| User details
+				.navbar-btn#btn-mainpage.btn.btn-default
+					| Main Page
+			ul.nav.navbar-nav.navbar-right
+				li
+					.navbar-btn#btn-logout.btn.btn-default
+						| Sign Out
 
-		table
-			tbody
-				tr
-					td
-						tr
-							td Blog Data: &nbsp;
-								p #{blogTextArea}
+	include blogPageBody
+	include modals/alert
+	include modals/confirm
+
+block scripts
+	script(src='/vendor/jquery-2.2.3.min.js')
+	script(src='/vendor/jquery.form.min.js')
+	script(src='/vendor/bootstrap.min.js')
+	script(src='/js/views/home.js')
+	script(src='/js/controllers/homeController.js')
+	script(src='/js/form-validators/accountValidator.js')

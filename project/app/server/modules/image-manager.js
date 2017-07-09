@@ -1,4 +1,5 @@
 require('../../../globalconfig');
+var fs = require('fs');
 
 exports.saveImage = function (req, saveImageOnServer) {
     var imageFileName = '';
@@ -11,12 +12,18 @@ exports.saveImage = function (req, saveImageOnServer) {
                 if (err) {
                     imageSavePath = '';
                     console.error(err);
-                } else {
-                    console.log('Image saved as ' + imageFileName);
-                    console.log('Image saved at ' + __dirname + imageSavePath);
                 }
             })
         };
     }
     return imageFileName;
+};
+
+exports.deleteImage = function (imageFileName) {
+    var imageSavePath = userImageUploadPath + imageFileName;
+    fs.unlink(__dirname + imageSavePath, function(err, res){
+        if (err) {
+            console.error(err);
+        }
+    });
 };
