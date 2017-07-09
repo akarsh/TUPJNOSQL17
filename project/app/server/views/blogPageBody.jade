@@ -5,20 +5,13 @@
 input(type='hidden', value= user._id)#userId
 
 #main
-h1 Welcome to Blog application
-h4 
-	a(href="/blogPost") Click here to create your new blog post
 
 #user-details
+
 	table
 		tbody
 			tr
 				td
 					tr
-						td
-							h3 
-								b All blog posts: &nbsp;
-						each blogTitle, index in blogData
-							tr
-								td
-									a #[a(href=`/blogPost/${blogs[index]}`) #{blogTitle}]
+						td Blog Data: &nbsp;
+							p #{blogTextArea}

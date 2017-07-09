@@ -8,7 +8,7 @@ exports.addBlog = function (req, callback) {
 
     var newData = {
         id: 0,
-        name: req.body['blogTitle'],
+        title: req.body['blogTitle'],
         category: req.body['category'],
         author: req.session.user._id
     };
@@ -17,8 +17,8 @@ exports.addBlog = function (req, callback) {
         var blogId = id;
         newData.id = blogId;
         redisclient.sadd("blogPost", blogId);
-        redisclient.hmset(blogId, 'blogTitle', newData.name, 'blogTextarea', req.body['blogTextarea'], 'category', newData.category, 'userId', newData.author);
-        //Post updates in Mongo & implicitly push to neo4j 
+        redisclient.hmset(blogId, 'blogTitle', newData.title, 'blogTextarea', req.body['blogTextarea'], 'category', newData.category, 'userId', newData.author);
+        //Post updates in Mongo & implicitly push to neo4j
         new BlogpostModel(newData).save(
             function (err, res) {
                 if (err) {
