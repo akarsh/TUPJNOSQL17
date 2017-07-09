@@ -18,7 +18,7 @@ exports.addBlog = function (req, callback) {
         newData.id = blogId;
         redisclient.sadd("blogPost", blogId);
         redisclient.hmset(blogId, 'blogTitle', newData.name, 'blogTextarea', req.body['blogTextarea'], 'category', newData.category, 'userId', newData.author);
-        //Post updates in mongo & neo4j 
+        //Post updates in Mongo & implicitly push to neo4j 
         new BlogpostModel(newData).save(
             function (err, res) {
                 if (err) {
