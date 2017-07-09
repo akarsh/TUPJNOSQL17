@@ -25,6 +25,9 @@ $('#btn-blogpost').click(function(){window.location.href = '/blogPost';});
 // handle account deletion //
 	$('.modal-confirm .submit').click(function(){ that.deleteAccount(); });
 
+// create a new blog post
+$('#btn-create-blogpost').click(function(){window.location.href = '/blogPost';});
+
 	this.deleteAccount = function()
 	{
 		$('.modal-confirm').modal('hide');
