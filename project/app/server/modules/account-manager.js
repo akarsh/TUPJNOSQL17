@@ -152,8 +152,9 @@ exports.updatePassword = function (email, newPass, callback) {
 
 /* account lookup methods */
 
-exports.deleteAccount = function (id, callback) {
-    accounts.remove({ _id: getObjectId(id) }, callback);
+exports.deleteAccount = function (req, callback) {
+    IM.deleteImage(req.session.user.image);
+    accounts.remove({ user: req.session.user.user }, callback);
 }
 
 exports.getAccountByEmail = function (email, callback) {

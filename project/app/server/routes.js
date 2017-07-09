@@ -236,7 +236,7 @@ module.exports = function (app) {
 	});
 
 	app.post('/delete', function (req, res) {
-		AM.deleteAccount(req.body.id, function (e, obj) {
+		AM.deleteAccount(req, function (e, obj) {
 			if (!e) {
 				res.clearCookie('user');
 				res.clearCookie('pass');
