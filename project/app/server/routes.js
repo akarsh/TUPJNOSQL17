@@ -103,7 +103,7 @@ module.exports = function (app) {
 			res.redirect('/');
 		} else {
 			var { blogTitleReply, blogId } = BM.getBlog();
-		      res.redirect('/mainPage');	
+		      res.redirect('/mainPage');
 	   }
 	});
 
@@ -113,14 +113,10 @@ module.exports = function (app) {
 			res.redirect('/');
 		} else {
 			var { blogTitleReply, blogId } = BM.getBlog();
-<<<<<<< HEAD
 			var { resultCategory, resultTitle } = RS.getRecommendation();
-||||||| merged common ancestors
-=======
 			if(blogId.length === 0) {
-		      res.redirect('/mainPage');	
+		      res.redirect('/mainPage');
 			} else {
->>>>>>> master
 			res.render('mainPage', {
 				title: 'main',
 				blogData: blogTitleReply,
@@ -159,7 +155,7 @@ module.exports = function (app) {
 		}
 	});
 
-    
+
 	app.get('/blogPost/:blogId', function (req, res) {
 		if (req.session.user == null) {
 			res.redirect('/');
