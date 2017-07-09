@@ -3,6 +3,8 @@ require('../../../app');
 var blogTitleReply = [];
 var blogPostKey = [];
 var blogTextareaReply = '';
+var blogCategory = '';
+var blogTT = '';
 
 exports.addBlog = function (req, callback) {
 
@@ -59,17 +61,22 @@ exports.getBlog = function (newData, callback) {
             });
         }
     });
-    const mergeArrToJSON = (a, b) => a.map((item, i) => ({
-        [item]: b[i]
-    }))
 
     return { blogTitleReply: blogTitleReply.reverse().slice(0, 11), blogId: blogPostKey.reverse().slice(0, 11) };
 }
 exports.getBlogData = function (newData, callback) {
 
+    redisclient.hget(newData, "blogTitle", function (err, reply) {
+        blogTT = reply.toString();
+    });
+
     redisclient.hget(newData, "blogTextarea", function (err, reply) {
         blogTextareaReply = reply.toString();
     });
 
-    return { blogTextareaReply: blogTextareaReply }
+    redisclient.hget(newData, "category", function (err, reply) {
+        blogCategory = reply.toString();
+    });
+
+    return { blogTextareaReply: blogTextareaReply, blogCategory:blogCategory, blogTT:blogTT }
 }
