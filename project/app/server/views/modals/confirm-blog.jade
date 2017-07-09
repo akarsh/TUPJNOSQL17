@@ -3,9 +3,7 @@
 		.modal-content
 			.modal-header
 				button.close(data-dismiss='modal') x
-				h4 Your data has been saved
-			.modal-body
-				input#blog-btn-submit(type='submit',value='Create your blog')
+				h3 Your data has been saved
 			.modal-footer
 				button(data-dismiss="modal").cancel.btn.btn-default Cancel
-				button(data-dismiss="modal").submit.btn.btn-primary Ok
+				input#retrieve-password-submit.btn.btn-primary(type='button', data-dismiss="modal" value='Ok' onclick="window.location.href='/blogPage'")
