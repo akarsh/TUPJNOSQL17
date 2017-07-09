@@ -5,9 +5,16 @@ var db = new neo4j.GraphDatabase('http://neo4j:123456@localhost:7474');
 
 var resultCategory = '';
 var resultTitle = '';
+var authorId ='';
+
+exports.getAuthorId = function(req, callback) {
+  authorId = req.session.user._id;
+  console.log("authorId: "+authorId);
+  return authorId;
+}
 
 db.cypher({
-    query: 'MATCH (n:Blogpost) WHERE n.category="Fiction" RETURN n LIMIT 1'
+    query: 'MATCH (n:Blogpost) WHERE n.author<>"'+authorId+'" RETURN n LIMIT 1'
 }, function (err, results) {
     if (err) throw err;
       resultCategory = results.map(function(item){ return item.n.properties.category }).toString();
@@ -15,7 +22,7 @@ db.cypher({
 });
 
 db.cypher({
-    query: 'MATCH (n:Blogpost) WHERE n.category="Fiction" AND n.author<>"5962603c39c5e904675a9f18" RETURN n LIMIT 1'
+    query: 'MATCH (n:Blogpost) WHERE n.category="Fiction" AND n.author<>"'+authorId+'" RETURN n LIMIT 1'
 }, function (err, results) {
     if (err) throw err;
       resultTitle = results.map(function(item){ return item.n.properties.title }).toString();

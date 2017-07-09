@@ -39,19 +39,15 @@ block content
 							option(selected=item.name == user.category)= item.name
 
 			.form-group
-				label.control-label.col-sm-3 Blog Data
+				label.control-label.col-sm-3 Blog Content
 				.col-sm-9
 					textarea#theblogTextarea(type='text', rows="20",cols="60", name='blogTextarea', placeholder= 'Enter your blog data here')
 			hr
 			.form-buttons
-				input#blog-btn-submit(type='submit',value='Create your blog')
+				input#blog-btn-submit(type='submit',value='Create your blog' data-toggle="modal" data-target="#modalBlogs")
 			.clearfix
 
-	include modals/confirm
 	include modals/confirm-blog
-
-
-include modals/confirm
 
 block scripts
 	script(src='/vendor/jquery-2.2.3.min.js')

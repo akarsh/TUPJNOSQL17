@@ -98,12 +98,29 @@ module.exports = function (app) {
 		}
 	});
 
+	app.get('/blogPage', function (req, res) {
+		if (req.session.user == null) {
+			res.redirect('/');
+		} else {
+			var { blogTitleReply, blogId } = BM.getBlog();
+		      res.redirect('/mainPage');	
+	   }
+	});
+
+
 	app.get('/mainPage', function (req, res) {
 		if (req.session.user == null) {
 			res.redirect('/');
 		} else {
 			var { blogTitleReply, blogId } = BM.getBlog();
+<<<<<<< HEAD
 			var { resultCategory, resultTitle } = RS.getRecommendation();
+||||||| merged common ancestors
+=======
+			if(blogId.length === 0) {
+		      res.redirect('/mainPage');	
+			} else {
+>>>>>>> master
 			res.render('mainPage', {
 				title: 'main',
 				blogData: blogTitleReply,
@@ -113,6 +130,7 @@ module.exports = function (app) {
 				udata: req.session.user
 			});
 		}
+	  }
 	});
 
 	app.get('/blogPost', function (req, res) {
@@ -131,19 +149,36 @@ module.exports = function (app) {
 		BM.addBlog(req);
 	});
 
+	app.get('/mainPage/:blogId', function (req, res) {
+		if (req.session.user == null) {
+			res.redirect('/');
+		} else {
+			var blogId = req.params.blogId;
+			var { blogTextareaReply, blogCategory, blogTT} = BM.getBlogData(blogId);
+		    res.redirect(`/blogPost/${blogId}`);
+		}
+	});
+
+    
 	app.get('/blogPost/:blogId', function (req, res) {
 		if (req.session.user == null) {
 			res.redirect('/');
 		} else {
 			var blogId = req.params.blogId;
-			var { blogTextareaReply } = BM.getBlogData(blogId);
+			var { blogTextareaReply, blogCategory, blogTT} = BM.getBlogData(blogId);
 			res.render('blogPage', {
 				title: 'main',
 				blogTextArea: blogTextareaReply,
+				blogsCategory: blogCategory,
+				blogsTitle: blogTT,
 				udata: req.session.user
 			});
 		}
 	});
+
+
+
+
 
 	app.get('/accountSettings', function (req, res) {
 		if (req.session.user == null) {
