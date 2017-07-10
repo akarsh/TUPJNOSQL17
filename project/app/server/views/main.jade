@@ -11,15 +11,26 @@ input(type='hidden', value= user._id)#userId
 	h6 To create a new blog post 
 	button(type='create-blogpost')#btn-create-blogpost.btn.btn-primary click here
 
-#user-details
+#recommendCategory-details
+	h5 Recommend Categories
+		br
+		br
+		each recomDataCate in recommendCategory
+			i #{recomDataCate} 
+						
+#recommendTitle-details
+	h6 Recommend Blog posts
+		br
+		br
+		each recomDataTitle in recommendTitle
+			i #{recomDataTitle} 
+
+#blog-details
 	table
 		tbody
 			tr
 				td
-					tr
-						td
-							h3 
-								b All blog posts: &nbsp;
+					h3 All blog posts: &nbsp;
 						each blogTitle, index in blogData
 							tr
 								td

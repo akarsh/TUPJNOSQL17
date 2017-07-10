@@ -4,6 +4,7 @@ var EM = require('./modules/email-dispatcher');
 var IM = require('./modules/image-manager');
 var BM = require('./modules/blog-manager');
 var CL = require('./modules/category-list');
+var RS = require('./modules/recommendation-manager');
 
 var express = require('express');
 
@@ -102,7 +103,7 @@ module.exports = function (app) {
 			res.redirect('/');
 		} else {
 			var { blogTitleReply, blogId } = BM.getBlog();
-		      res.redirect('/mainPage');	
+		      res.redirect('/mainPage');
 	   }
 	});
 
@@ -112,13 +113,16 @@ module.exports = function (app) {
 			res.redirect('/');
 		} else {
 			var { blogTitleReply, blogId } = BM.getBlog();
+			var { resultCategory, resultTitle } = RS.getRecommendation();
 			if(blogId.length === 0) {
-		      res.redirect('/mainPage');	
+		      res.redirect('/mainPage');
 			} else {
 			res.render('mainPage', {
 				title: 'main',
 				blogData: blogTitleReply,
 				blogs: blogId,
+				recommendCategory: resultCategory,
+				recommendTitle: resultTitle,
 				udata: req.session.user
 			});
 		}
@@ -151,7 +155,7 @@ module.exports = function (app) {
 		}
 	});
 
-    
+
 	app.get('/blogPost/:blogId', function (req, res) {
 		if (req.session.user == null) {
 			res.redirect('/');
