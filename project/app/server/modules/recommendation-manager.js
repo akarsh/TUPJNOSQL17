@@ -14,7 +14,7 @@ exports.getAuthorId = function(req, callback) {
 }
 
 db.cypher({
-    query: 'MATCH (n:Blogpost) WHERE n.author<>"'+authorId+'" RETURN n LIMIT 1'
+    query: 'MATCH (n:Blogpost) WHERE n.author<>"'+authorId+'" RETURN n AS Recommended LIMIT 1'
 }, function (err, results) {
     if (err) throw err;
       resultCategory = results.map(function(item){ return item.n.properties.category }).toString();
@@ -22,7 +22,7 @@ db.cypher({
 });
 
 db.cypher({
-    query: 'MATCH (n:Blogpost) WHERE n.category="Fiction" AND n.author<>"'+authorId+'" RETURN n LIMIT 1'
+    query: 'MATCH (n:Blogpost) WHERE n.category="Fiction" AND n.author<>"'+authorId+'" RETURN n AS Recommended LIMIT 1'
 }, function (err, results) {
     if (err) throw err;
       resultTitle = results.map(function(item){ return item.n.properties.title }).toString();
